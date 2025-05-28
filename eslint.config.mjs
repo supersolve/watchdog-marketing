@@ -16,6 +16,7 @@ const eslintConfig = [
       'react/no-unescaped-entities': ['error'],
       'prefer-arrow-callback': ['error'],
       'prefer-template': ['error'],
+      'no-unused-vars': ['error'],
     },
   }),
 ]
