@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Manrope, Playfair_Display } from 'next/font/google'
+import { Header } from '@/components/app/header'
 import './globals.css'
 
 const manrope = Manrope({ subsets: ['latin'], variable: '--font-manrope' })
@@ -20,8 +21,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${manrope.variable} ${playfair.variable} antialiased`}>
-        {children}
+      <body
+        className={`${manrope.variable} ${playfair.variable} antialiased bg-secondary`}
+      >
+        <Header />
+        <div className="container mx-auto">{children}</div>
       </body>
     </html>
   )
