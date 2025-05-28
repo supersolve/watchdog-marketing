@@ -1,6 +1,7 @@
 'use client'
 
 import * as React from 'react'
+import Link from 'next/link'
 import { Button } from '../ui/button'
 import { useIsMobile } from '../hooks/use-mobile'
 import { cn } from '@/lib/utils'
@@ -80,9 +81,11 @@ export function Header() {
       <div className="flex items-center justify-between h-16 px-4 sm:px-6 lg:px-8">
         {/* Logo/Brand */}
         <div className="flex-shrink-0">
-          <h1 className="text-xl font-serif font-semibold text-tertiary-foreground">
-            Watchdog
-          </h1>
+          <Link href="/" className="block">
+            <h1 className="text-xl font-serif font-semibold text-tertiary-foreground hover:text-foreground transition-colors cursor-pointer">
+              Watchdog
+            </h1>
+          </Link>
         </div>
 
         {/* Desktop Navigation */}

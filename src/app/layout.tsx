@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Manrope, Playfair_Display } from 'next/font/google'
 import { Header } from '@/components/app/header'
 import './globals.css'
+import { Footer } from '@/components/app/footer'
 
 const manrope = Manrope({ subsets: ['latin'], variable: '--font-manrope' })
 const playfair = Playfair_Display({
@@ -26,6 +27,7 @@ export default function RootLayout({
       >
         <Header />
         <div className="container mx-auto">{children}</div>
+        <Footer />
       </body>
     </html>
   )

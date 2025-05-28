@@ -237,8 +237,10 @@
   --tertiary-foreground: var(--stone-800);
   --muted: var(--beige-50);
   --muted-foreground: var(--stone-500);
-  --accent: var(--orange-300);
-  --accent-foreground: var(--stone-800);
+  --accent: var(
+    --green-800
+  ); /* This is where you'll change our accent color! */
+  --accent-foreground: var(--stone-100);
   --destructive: var(--red-600);
   --border: var(--stone-300);
   --input: var(--stone-300);
@@ -339,5 +341,16 @@
 
   .main-content {
     @apply bg-background rounded-xl;
+    padding-top: var(--header-height);
+  }
+
+  /* Hide scrollbar utilities */
+  .scrollbar-hide {
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
   }
 }
