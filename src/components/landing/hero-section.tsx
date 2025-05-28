@@ -17,7 +17,7 @@ export function HeroSection() {
                 Never overpay again. Watchdog automatically scans your invoices,
                 compares them to your agreements, and alerts you of
                 discrepancies or unexpected price changes before they impact
-                your bottom line. Is not that great?
+                your bottom line. Is not that great? yes. 
               </p>
               <div className="mt-10 flex items-center gap-x-6">
                 <Button variant="accent" size="lg">
