@@ -1,0 +1,28 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+**Technology stack**
+
+- This project is a modern web application built with Next.js 15.3 (App Router, TypeScript) and styled with Tailwind CSS v4, source code in `src/`.
+- Tailwind v4 no longer supports a config file such as tailwind.config.{js, ts}, but everything has to be defined in `src/app/globals.css` where Tailwind is injected in the first line.
+- The UI is composed using Shadcn (built on Radix UI) with icons from Lucide React. New components can be installed with `npx shadcn@latest add [component]`, which will be added to `src/components/ui/`
+
+**Next.js rules**
+
+- Use the App Router structure with `page.tsx` files in route directories.
+- Client components must be explicitly marked with `'use client'` at the top of the file.
+- Use kebab-case for directory names (e.g., `components/auth-form`) and PascalCase for component files.
+- Prefer named exports over default exports, i.e. `export function Button() { /* ... */ }` instead of `export default function Button() { /* ... */ }`.
+- Minimize `'use client'` directives:
+  - Keep most components as React Server Components (RSC)
+  - Only use client components when you need interactivity and wrap in `Suspense` with fallback UI
+  - Create small client component wrappers around interactive elements
+- Avoid unnecessary `useState` and `useEffect` when possible:
+  - Use React Server Actions for form handling
+  - Use URL search params for shareable state
+
+**General guidelines**
+
+- Write modular and logically structured code, always adhering to Next.js' server-first approach and latest best practices.

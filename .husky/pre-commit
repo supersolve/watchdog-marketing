@@ -1,0 +1,8 @@
+# Format all files with Prettier
+npm run prettier:check
+
+# Run linting
+npm run lint
+
+# Run type checking and build
+npm run build
