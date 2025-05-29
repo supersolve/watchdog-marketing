@@ -11,17 +11,19 @@ export function HeroSection() {
           <div className="lg:pr-8 lg:pt-4">
             <div className="lg:max-w-lg">
               <h1 className="text-5xl tracking-tight sm:text-6xl lg:text-5xl xl:text-6xl">
-                Get your <span className="font-serif">financial watchdog</span>
+                Get your <span className="font-serif">Financial Watchdog</span>
               </h1>
               <p className="mt-6 text-lg leading-8 text-stone-600 sm:text-xl">
-                Never overpay again. Watchdog automatically scans your invoices,
-                compares them to your agreements, and alerts you of
-                discrepancies or unexpected price changes before they impact
-                your bottom line. Is not that great!
+                <span className="text-accent font-medium">
+                  Never overpay again.
+                </span>{' '}
+                Watchdog automatically scans your invoices, compares them to
+                your agreements, and alerts you of errors before they hurt your
+                bottom line.
               </p>
               <div className="mt-10 flex items-center gap-x-6">
                 <Button variant="accent" size="lg">
-                  Start protecting your finances
+                  Try Watchdog
                   <ArrowRightIcon className="w-4 h-4" />
                 </Button>
               </div>
@@ -30,16 +32,14 @@ export function HeroSection() {
 
           {/* Image */}
           <div className="flex justify-center lg:justify-end">
-            <div className="relative w-full max-w-lg">
-              <Image
-                src="/placeholder.svg"
-                alt="Financial Watchdog Dashboard Preview"
-                width={600}
-                height={600}
-                className="w-full h-auto rounded-lg shadow-lg"
-                priority
-              />
-            </div>
+            <Image
+              src="/watchdog1.png"
+              alt="Financial Watchdog Dashboard Preview"
+              width={400}
+              height={400}
+              className="w-full h-auto rounded-md"
+              priority
+            />
           </div>
         </div>
       </div>

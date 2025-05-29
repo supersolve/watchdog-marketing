@@ -7,31 +7,22 @@ import { SectionTitle } from '../ui/section-title'
 const integrations = [
   {
     name: 'Tripletex',
-    description: 'Complete accounting and invoicing solution',
-    logo: '/placeholder.svg',
+    description: 'Software used by 140 000 Norwegian businesses',
+    logo: '/logo-tripletex.png',
     status: 'available',
-    features: ['Invoice monitoring', 'Real-time sync', 'Automated alerts'],
   },
   {
-    name: 'AccountFlow',
-    description: 'Modern cloud-based accounting platform',
+    name: 'Norwegian accounting software',
+    description:
+      'Support for Power Office, Fiken, and more updated continually',
     logo: '/placeholder.svg',
     status: 'coming',
-    features: ['Invoice tracking', 'Contract analysis', 'Price validation'],
   },
   {
-    name: 'FinanceHub',
-    description: 'Enterprise financial management system',
+    name: 'US-based accounting software',
+    description: 'We will open support for Quickbooks and Xero in Q3 2025',
     logo: '/placeholder.svg',
     status: 'coming',
-    features: ['Bulk processing', 'Advanced reporting', 'Multi-currency'],
-  },
-  {
-    name: 'BookKeeper Pro',
-    description: 'Professional bookkeeping and tax software',
-    logo: '/placeholder.svg',
-    status: 'coming',
-    features: ['Tax compliance', 'Expense tracking', 'Audit trails'],
   },
 ]
 
@@ -41,11 +32,11 @@ export function IntegrationsSection() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <SectionTitle
           title="Seamlessly connect"
-          subtitle="Watchdog automatically monitors your invoices in your accounting system"
+          subtitle="Watchdog automatically monitors invoices from your accounting system"
         />
 
         <div className="mx-auto mt-16 max-w-6xl">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {integrations.map((integration) => (
               <div
                 key={integration.name}
@@ -67,13 +58,13 @@ export function IntegrationsSection() {
 
                 {/* Logo */}
                 <div className="mb-4">
-                  <div className="h-12 w-12 rounded-lg bg-stone-100 flex items-center justify-center">
+                  <div className="h-12 w-24 rounded-lg flex items-center justify-center">
                     <Image
                       src={integration.logo}
                       alt={`${integration.name} logo`}
-                      width={32}
-                      height={32}
-                      className="h-8 w-8"
+                      width={128}
+                      height={64}
+                      className="object-contain max-h-8 w-auto max-w-full"
                     />
                   </div>
                 </div>
@@ -86,16 +77,6 @@ export function IntegrationsSection() {
                   <p className="text-sm text-stone-600 mb-4">
                     {integration.description}
                   </p>
-                </div>
-
-                {/* Features */}
-                <div className="space-y-2">
-                  {integration.features.map((feature) => (
-                    <div key={feature} className="flex items-center text-sm">
-                      <CheckIcon className="h-4 w-4 text-green-500 mr-2 flex-shrink-0" />
-                      <span className="text-stone-600">{feature}</span>
-                    </div>
-                  ))}
                 </div>
               </div>
             ))}

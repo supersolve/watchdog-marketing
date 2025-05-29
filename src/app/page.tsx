@@ -4,6 +4,7 @@ import {
   TestimonialsSection,
   IntegrationsSection,
   PricingSection,
+  AboutSection,
 } from '@/components/landing'
 
 export default function Home() {
@@ -14,6 +15,7 @@ export default function Home() {
       <TestimonialsSection />
       <IntegrationsSection />
       <PricingSection />
+      <AboutSection />
     </main>
   )
 }

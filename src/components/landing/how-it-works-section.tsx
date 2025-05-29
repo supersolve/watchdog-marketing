@@ -9,35 +9,29 @@ import { SectionTitle } from '../ui/section-title'
 const steps = [
   {
     number: 1,
-    title: 'Connect Your Accounting Software',
+    title: 'Connect Your Data',
     description:
-      'Seamlessly integrate Watchdog with your accounting software API',
+      'Connect Watchdog to your accounting software or upload your invoices manually and agreements directly',
     details:
-      'Connect your existing accounting system in just a few clicks. We support all major platforms including QuickBooks, Xero, FreshBooks, and more. Our secure API integration ensures your data stays protected while giving Watchdog access to analyze your invoices and agreements.',
+      'Connect Watchdog to your accounting software or upload your invoices and agreements directly.  Our API integration ensures your data stays protected.',
     image: '/placeholder.svg',
   },
   {
     number: 2,
     title: 'Let Watchdog Work',
-    description: 'Our AI automatically scans and analyzes your invoices',
+    description:
+      'Let Watchdog continually monitor your invoices and agreements',
     details:
-      'Once connected, Watchdog continuously monitors your incoming invoices. Our advanced AI compares each invoice against your stored agreements, contracts, and historical pricing data to identify any discrepancies or unexpected changes.',
+      'Let Watchdog continually monitor your invoices and agreements for errors or unexpected changes - such as price jumps or missing discounts.',
     image: '/placeholder.svg',
   },
   {
     number: 3,
     title: 'Get Instant Alerts',
-    description: 'Receive immediate notifications about pricing discrepancies',
+    description:
+      'Receive alerts when Watchdog detects an issue and recommendations on how to resolve it',
     details:
-      "When Watchdog detects an issue - whether it's an overcharge, unexpected fee, or pricing change - you'll receive instant notifications via email, SMS, or in-app alerts. Never miss another billing error again.",
-    image: '/placeholder.svg',
-  },
-  {
-    number: 4,
-    title: 'Add Your Agreements',
-    description: 'Upload contracts and agreements for comprehensive monitoring',
-    details:
-      "Enhance Watchdog's accuracy by uploading your vendor contracts, service agreements, and pricing schedules. This allows for even more precise monitoring and helps catch subtle pricing changes that might otherwise go unnoticed.",
+      'Receive alerts when Watchdog detects an issue and get recommendations on how to resolve it with your suppliers.',
     image: '/placeholder.svg',
   },
 ]
@@ -56,8 +50,8 @@ export function HowItWorksSection() {
     <section className="py-16 sm:py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <SectionTitle
-          title="How it works"
-          subtitle="Get started in minutes and let Watchdog protect your finances automatically"
+          title="How Watchdog works"
+          subtitle="Get your own financial Watchdog in 3 simple steps"
         />
 
         <div className="mx-auto mt-16 max-w-6xl">
@@ -77,7 +71,7 @@ export function HowItWorksSection() {
 
             {/* Steps List */}
             <div className="order-1 lg:order-2">
-              <div className="space-y-4">
+              <div className="space-y-6">
                 {steps.map((step) => (
                   <div
                     key={step.number}
@@ -90,13 +84,13 @@ export function HowItWorksSection() {
                   >
                     <button
                       onClick={() => toggleStep(step.number)}
-                      className="w-full p-4 text-left focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 rounded-lg"
+                      className="w-full p-6 text-left focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 rounded-lg"
                     >
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center space-x-4">
+                      <div className="flex items-start justify-between">
+                        <div className="flex items-start space-x-4">
                           <div
                             className={cn(
-                              'flex h-8 w-8 items-center justify-center rounded-full text-sm font-semibold',
+                              'flex h-10 w-10 items-center justify-center rounded-full text-base font-semibold mt-1',
                               expandedStep === step.number
                                 ? 'bg-accent text-white'
                                 : 'bg-stone-100 text-stone-600'
@@ -104,12 +98,12 @@ export function HowItWorksSection() {
                           >
                             {step.number}
                           </div>
-                          <div>
-                            <h3 className="text-lg font-semibold text-stone-900">
+                          <div className="flex-1">
+                            <h3 className="text-xl font-semibold text-stone-900 mb-2">
                               {step.title}
                             </h3>
                             {expandedStep !== step.number && (
-                              <p className="text-sm text-stone-600 mt-1">
+                              <p className="text-base text-stone-600 mt-2 leading-relaxed">
                                 {step.description}
                               </p>
                             )}
@@ -117,7 +111,7 @@ export function HowItWorksSection() {
                         </div>
                         <ChevronDownIcon
                           className={cn(
-                            'h-5 w-5 text-stone-400 transition-transform duration-200 flex-shrink-0',
+                            'h-6 w-6 text-stone-400 transition-transform duration-200 flex-shrink-0 mt-1',
                             expandedStep === step.number ? 'rotate-180' : ''
                           )}
                         />
@@ -126,7 +120,7 @@ export function HowItWorksSection() {
 
                     {/* Expandable Content - Mobile Image + Details */}
                     {expandedStep === step.number && (
-                      <div className="px-4 pb-4">
+                      <div className="px-6 pb-6">
                         {/* Mobile Image - Only when expanded */}
                         <div className="lg:hidden mt-4 mb-6">
                           <div className="relative w-full max-w-sm mx-auto">
@@ -140,8 +134,8 @@ export function HowItWorksSection() {
                           </div>
                         </div>
 
-                        <div className="lg:ml-12 pt-4 border-t border-accent/20">
-                          <p className="text-stone-700 leading-relaxed">
+                        <div className="lg:ml-14 pt-4 border-t border-accent/20">
+                          <p className="text-stone-700 leading-relaxed text-base">
                             {step.details}
                           </p>
                         </div>

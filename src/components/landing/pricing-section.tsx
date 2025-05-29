@@ -1,57 +1,32 @@
 import { Button } from '../ui/button'
 import { SectionTitle } from '../ui/section-title'
-import { CheckIcon } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 const pricingTiers = [
   {
     name: 'Free',
-    price: 'NOK 0',
+    price: '$0',
     period: '/month',
-    description: 'Perfect for trying out Watchdog',
-    invoiceLimit: 'Up to 100 invoices',
-    features: [
-      'Basic invoice scanning',
-      'Email alerts',
-      'Simple dashboard',
-      'Community support',
-    ],
-    cta: 'Start Free',
+    description: 'For the curious who want to try Watchdog',
+    invoiceLimit: 'Includes 500 invoice scans and three alerts',
+    cta: 'Try for free',
     popular: false,
   },
   {
     name: 'Pro',
-    price: 'NOK 10,000',
+    price: '$1000',
     period: '/month',
-    description: 'For growing businesses',
-    invoiceLimit: 'Up to 5,000 invoices/year',
-    features: [
-      'Advanced AI scanning',
-      'Real-time alerts (email, SMS, in-app)',
-      'Agreement upload & monitoring',
-      'Advanced analytics dashboard',
-      'Priority support',
-      'API access',
-      'Custom integrations',
-    ],
-    cta: 'Start Pro Trial',
+    description: 'For businesses wanting to boost their bottom line',
+    invoiceLimit: 'Includes 10,000 invoice scans and unlimited alerts',
+    cta: 'Get started',
     popular: true,
   },
   {
     name: 'Enterprise',
     price: 'Custom',
     period: '',
-    description: 'For large organizations',
-    invoiceLimit: 'Unlimited invoices',
-    features: [
-      'Everything in Pro',
-      'Dedicated account manager',
-      'Custom AI training',
-      'Advanced security & compliance',
-      'White-label options',
-      'Custom reporting',
-      'SLA guarantees',
-    ],
+    description: 'For large businesses with specific needs',
+    invoiceLimit: 'Includes unlimited scans and alerts',
     cta: 'Contact Sales',
     popular: false,
   },
@@ -89,10 +64,9 @@ export function PricingSection() {
                 <h3 className="text-xl font-semibold text-stone-900">
                   {tier.name}
                 </h3>
-                <p className="mt-2 text-sm text-stone-600">
+                <p className="mt-2 text-semibold text-stone-600 min-h-[3rem]">
                   {tier.description}
                 </p>
-
                 <div className="mt-6">
                   <div className="flex items-baseline justify-center">
                     <span className="text-4xl font-bold text-stone-900">
@@ -104,7 +78,7 @@ export function PricingSection() {
                       </span>
                     )}
                   </div>
-                  <p className="mt-2 text-sm font-medium text-accent">
+                  <p className="mt-2 text-sm font-sm text-stone-600 whitespace-pre-line">
                     {tier.invoiceLimit}
                   </p>
                 </div>
@@ -117,33 +91,8 @@ export function PricingSection() {
                   {tier.cta}
                 </Button>
               </div>
-
-              <div className="mt-8">
-                <ul className="space-y-3">
-                  {tier.features.map((feature) => (
-                    <li key={feature} className="flex items-start">
-                      <CheckIcon className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
-                      <span className="ml-3 text-sm text-stone-700">
-                        {feature}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
             </div>
           ))}
-        </div>
-
-        <div className="mt-16 text-center">
-          <p className="text-sm text-stone-600">
-            All plans include a 14-day free trial. No credit card required.{' '}
-            <a
-              href="#"
-              className="font-medium text-accent hover:text-accent/80"
-            >
-              View detailed feature comparison →
-            </a>
-          </p>
         </div>
       </div>
     </section>

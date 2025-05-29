@@ -1,115 +1,54 @@
 'use client'
 
-import { useState } from 'react'
 import Image from 'next/image'
-import { ChevronLeftIcon, ChevronRightIcon } from 'lucide-react'
 import { SectionTitle } from '../ui/section-title'
 
 const testimonials = [
   {
     id: 1,
-    company: 'TechCorp Solutions',
+    company: 'Baker Brun',
     logo: '/placeholder.svg',
-    quote:
-      "Watchdog has saved us thousands of dollars by catching billing errors we never would have noticed. It's like having a financial detective working 24/7.",
-    name: 'Sarah Johnson',
-    role: 'CFO',
+    quote: 'xxx',
+    name: 'Magnus Brun',
+    role: 'CEO',
     photo: '/placeholder.svg',
   },
   {
     id: 2,
-    company: 'GreenLeaf Industries',
+    company: 'Digg Pizza',
     logo: '/placeholder.svg',
-    quote:
-      "The integration was seamless and the alerts are incredibly accurate. We've reduced our invoice processing time by 60% while improving accuracy.",
-    name: 'Michael Chen',
-    role: 'Finance Director',
+    quote: 'xxx',
+    name: 'Gaute Bakke',
+    role: 'CEO',
     photo: '/placeholder.svg',
   },
   {
     id: 3,
-    company: 'Innovate Labs',
+    company: 'Ghost Town',
     logo: '/placeholder.svg',
-    quote:
-      'Before Watchdog, we were manually checking hundreds of invoices. Now we only focus on the ones that actually need attention. Game changer.',
-    name: 'Emily Rodriguez',
-    role: 'Operations Manager',
-    photo: '/placeholder.svg',
-  },
-  {
-    id: 4,
-    company: 'BuildRight Construction',
-    logo: '/placeholder.svg',
-    quote:
-      'The ROI was immediate. In the first month alone, Watchdog identified over $15,000 in billing discrepancies across our vendor contracts.',
-    name: 'David Thompson',
-    role: 'Financial Controller',
-    photo: '/placeholder.svg',
-  },
-  {
-    id: 5,
-    company: 'Digital Dynamics',
-    logo: '/placeholder.svg',
-    quote:
-      'What impressed us most was how quickly it learned our business patterns. The AI gets smarter every month and catches even subtle pricing changes.',
-    name: 'Lisa Park',
-    role: 'VP of Finance',
-    photo: '/placeholder.svg',
-  },
-  {
-    id: 6,
-    company: 'Coastal Enterprises',
-    logo: '/placeholder.svg',
-    quote:
-      'The peace of mind is invaluable. Knowing that every invoice is being monitored means I can focus on strategic initiatives instead of manual reviews.',
-    name: 'Robert Martinez',
-    role: 'Chief Financial Officer',
+    quote: 'xxx',
+    name: 'Chris Jarodd',
+    role: 'CEO',
     photo: '/placeholder.svg',
   },
 ]
 
 export function TestimonialsSection() {
-  const [currentIndex, setCurrentIndex] = useState(0)
-
-  const goToSlide = (index: number) => {
-    setCurrentIndex(index)
-  }
-
-  const goToPrevious = () => {
-    setCurrentIndex(
-      currentIndex > 0 ? currentIndex - 1 : testimonials.length - 1
-    )
-  }
-
-  const goToNext = () => {
-    setCurrentIndex(
-      currentIndex < testimonials.length - 1 ? currentIndex + 1 : 0
-    )
-  }
-
-  // Calculate how many cards fit in the viewport
-  const cardWidth = 384 + 24 // w-96 + gap
-  const translateX = -(currentIndex * cardWidth)
-
   return (
-    <section className="py-16 sm:py-24 lg:py-32 overflow-x-clip">
-      <div className="">
+    <section className="py-16 sm:py-24 lg:py-32">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <SectionTitle
-          title="Don't take our word for it"
+          title="What our customers say"
           subtitle="See how companies like yours are saving money and time with Watchdog"
         />
 
-        {/* Slider Container */}
-        <div className="mt-16 relative h-auto pb-5">
-          {/* Slides Container */}
-          <div
-            className="flex transition-transform duration-500 ease-in-out"
-            style={{ transform: `translateX(${translateX}px)` }}
-          >
+        {/* Testimonials Grid */}
+        <div className="mt-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 justify-items-center">
             {testimonials.map((testimonial, index) => (
               <div
                 key={testimonial.id}
-                className="flex-shrink-0 w-96 h-96 mr-6"
+                className="w-full max-w-md h-[28rem]"
                 role="group"
                 aria-label={`${index + 1} of ${testimonials.length}`}
               >
@@ -157,41 +96,6 @@ export function TestimonialsSection() {
                 </div>
               </div>
             ))}
-          </div>
-        </div>
-
-        {/* Navigation Controls */}
-        <div className="mt-8 flex items-center justify-between">
-          {/* Pagination Dots */}
-          <div className="flex space-x-2">
-            {testimonials.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => goToSlide(index)}
-                className={`h-2 w-2 rounded-full transition-colors duration-200 ${
-                  index === currentIndex ? 'bg-accent' : 'bg-stone-300'
-                }`}
-                aria-label={`Go to testimonial ${index + 1}`}
-              />
-            ))}
-          </div>
-
-          {/* Arrow Navigation */}
-          <div className="flex space-x-2">
-            <button
-              onClick={goToPrevious}
-              className="p-2 rounded-full border border-stone-300 hover:border-stone-400 hover:bg-stone-50 transition-colors duration-200"
-              aria-label="Previous testimonial"
-            >
-              <ChevronLeftIcon className="h-5 w-5 text-stone-600" />
-            </button>
-            <button
-              onClick={goToNext}
-              className="p-2 rounded-full border border-stone-300 hover:border-stone-400 hover:bg-stone-50 transition-colors duration-200"
-              aria-label="Next testimonial"
-            >
-              <ChevronRightIcon className="h-5 w-5 text-stone-600" />
-            </button>
           </div>
         </div>
       </div>
