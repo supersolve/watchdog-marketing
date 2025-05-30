@@ -41,7 +41,7 @@ export function AboutSection() {
           </div>
           <div className="flex justify-center lg:justify-end">
             <div className="relative w-full max-w-lg">
-              <div className="aspect-square rounded-2xl bg-gradient-to-br from-accent/10 to-accent/30 p-8 shadow-lg">
+              <div className="aspect-square rounded-2xl bg-stone-200 p-8 shadow-md">
                 <div className="flex h-full items-center justify-center">
                   <Image
                     src="/benjamin.png"

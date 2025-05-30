@@ -1,6 +1,5 @@
 'use client'
 
-import Image from 'next/image'
 import { CheckIcon } from 'lucide-react'
 import { SectionTitle } from '../ui/section-title'
 
@@ -8,20 +7,23 @@ const integrations = [
   {
     name: 'Tripletex',
     description: 'Software used by 140 000 Norwegian businesses',
-    logo: '/logo-tripletex.png',
+    country: 'Norway',
+    flag: '🇳🇴',
     status: 'available',
   },
   {
-    name: 'Norwegian accounting software',
+    name: 'PowerOffice, Fiken, and more',
     description:
       'Support for Power Office, Fiken, and more updated continually',
-    logo: '/placeholder.svg',
+    country: 'Norway',
+    flag: '🇳🇴',
     status: 'coming',
   },
   {
-    name: 'US-based accounting software',
+    name: 'Quickbooks and Xero',
     description: 'We will open support for Quickbooks and Xero in Q3 2025',
-    logo: '/placeholder.svg',
+    country: 'United States',
+    flag: '🇺🇸',
     status: 'coming',
   },
 ]
@@ -50,31 +52,32 @@ export function IntegrationsSection() {
                       Available
                     </span>
                   ) : (
-                    <span className="inline-flex items-center rounded-full bg-amber-100 px-2 py-1 text-xs font-medium text-amber-800">
+                    <span className="inline-flex items-center rounded-full bg-stone-200 px-2 py-1 text-xs font-medium text-stone-800">
                       Coming Soon
                     </span>
                   )}
                 </div>
 
-                {/* Logo */}
+                {/* Flag Icon */}
                 <div className="mb-4">
-                  <div className="h-12 w-24 rounded-lg flex items-center justify-center">
-                    <Image
-                      src={integration.logo}
-                      alt={`${integration.name} logo`}
-                      width={128}
-                      height={64}
-                      className="object-contain max-h-8 w-auto max-w-full"
-                    />
+                  <div className="h-16 w-16 rounded-full bg-stone-100 flex items-center justify-center">
+                    <span className="text-3xl" role="img" aria-label={`${integration.country} flag`}>
+                      {integration.flag}
+                    </span>
                   </div>
                 </div>
 
                 {/* Content */}
                 <div className="mb-4">
-                  <h3 className="text-lg font-semibold text-stone-900 mb-2">
-                    {integration.name}
-                  </h3>
-                  <p className="text-sm text-stone-600 mb-4">
+                  <div className="flex items-center gap-2 mb-2">
+                    <h3 className="text-lg font-semibold text-stone-900">
+                      {integration.name}
+                    </h3>
+                  </div>
+                  <p className="text-xs text-stone-500 mb-2 font-medium">
+                    {integration.country}
+                  </p>
+                  <p className="text-sm text-stone-600">
                     {integration.description}
                   </p>
                 </div>

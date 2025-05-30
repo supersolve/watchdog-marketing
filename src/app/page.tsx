@@ -1,7 +1,7 @@
 import {
   HeroSection,
   HowItWorksSection,
-  TestimonialsSection,
+  // TestimonialsSection,
   IntegrationsSection,
   PricingSection,
   AboutSection,
@@ -12,7 +12,7 @@ export default function Home() {
     <main>
       <HeroSection />
       <HowItWorksSection />
-      <TestimonialsSection />
+      {/* <TestimonialsSection /> */}
       <IntegrationsSection />
       <PricingSection />
       <AboutSection />

@@ -11,28 +11,28 @@ const steps = [
     number: 1,
     title: 'Connect Your Data',
     description:
-      'Connect Watchdog to your accounting software or upload your invoices manually and agreements directly',
+      'Connect to accounting software or upload directly',
     details:
       'Connect Watchdog to your accounting software or upload your invoices and agreements directly.  Our API integration ensures your data stays protected.',
-    image: '/placeholder.svg',
+    image: '/webapp-upload.png',
   },
   {
     number: 2,
     title: 'Let Watchdog Work',
     description:
-      'Let Watchdog continually monitor your invoices and agreements',
+      'Let Watchdog scan archived and incoming supplier invoices',
     details:
       'Let Watchdog continually monitor your invoices and agreements for errors or unexpected changes - such as price jumps or missing discounts.',
-    image: '/placeholder.svg',
+    image: '/webapp-invoices.png',
   },
   {
     number: 3,
     title: 'Get Instant Alerts',
     description:
-      'Receive alerts when Watchdog detects an issue and recommendations on how to resolve it',
+      'Get alerts when Watchdog detects an issue',
     details:
-      'Receive alerts when Watchdog detects an issue and get recommendations on how to resolve it with your suppliers.',
-    image: '/placeholder.svg',
+      'Get alerts when Watchdog detects an issue and get recommendations on how to resolve it.',
+    image: '/webapp-alerts.png',
   },
 ]
 
@@ -51,7 +51,7 @@ export function HowItWorksSection() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <SectionTitle
           title="How Watchdog works"
-          subtitle="Get your own financial Watchdog in 3 simple steps"
+          subtitle="Upload your data and let Watchdog do the rest"
         />
 
         <div className="mx-auto mt-16 max-w-6xl">
@@ -78,7 +78,7 @@ export function HowItWorksSection() {
                     className={cn(
                       'rounded-lg border transition-all duration-200',
                       expandedStep === step.number
-                        ? 'border-accent bg-accent/10 shadow-sm'
+                        ? 'border-accent bg-stone-200 shadow-sm'
                         : 'border-stone-200 bg-white hover:border-stone-300'
                     )}
                   >

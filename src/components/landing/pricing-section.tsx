@@ -15,7 +15,7 @@ const pricingTiers = [
   {
     name: 'Pro',
     price: '$1000',
-    period: '/month',
+    period: '/month', 
     description: 'For businesses wanting to boost their bottom line',
     invoiceLimit: 'Includes 10,000 invoice scans and unlimited alerts',
     cta: 'Get started',
