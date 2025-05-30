@@ -2,28 +2,86 @@
 
 import { CheckIcon } from 'lucide-react'
 import { SectionTitle } from '../ui/section-title'
+import Image from 'next/image'
 
-const integrations = [
+type ImageLogo = {
+  name: string
+  type: 'image'
+  src: string
+  bgColor: string
+  textColor: string
+}
+
+type IconLogo = {
+  name: string
+  type: 'icon'
+  icon: string
+  bgColor: string
+  textColor: string
+}
+
+type Logo = ImageLogo | IconLogo
+
+type Integration = {
+  name: string
+  description: string
+  country: string
+  logos: Logo[]
+  status: 'available' | 'coming'
+}
+
+const integrations: Integration[] = [
   {
     name: 'Tripletex',
     description: 'Software used by 140 000 Norwegian businesses',
     country: 'Norway',
-    flag: '🇳🇴',
+    logos: [
+      {
+        name: 'Tripletex',
+        type: 'image',
+        src: '/logo-tripletex.png',
+        bgColor: 'bg-white',
+        textColor: 'text-blue-600'
+      }
+    ],
     status: 'available',
   },
   {
     name: 'PowerOffice, Fiken, and more',
     description:
-      'Support for Power Office, Fiken, and more updated continually',
+      'Support for Power Office, Fiken, and more are updated continually',
     country: 'Norway',
-    flag: '🇳🇴',
+    logos: [
+      {
+        name: 'PowerOffice',
+        type: 'image',
+        src: '/logo-poweroffice.png',
+        bgColor: 'bg-white',
+        textColor: 'text-green-600'
+      },
+      {
+        name: 'Fiken',
+        type: 'image',
+        src: '/logo-fiken.svg',
+        bgColor: 'bg-white',
+        textColor: 'text-purple-600'
+      },
+    ],
     status: 'coming',
   },
   {
-    name: 'Quickbooks and Xero',
-    description: 'We will open support for Quickbooks and Xero in Q3 2025',
+    name: 'Quickbooks and more',
+    description: 'We will open support for US-based software in Q3 2025',
     country: 'United States',
-    flag: '🇺🇸',
+    logos: [
+      {
+        name: 'Intuit QuickBooks',
+        type: 'image',
+        src: '/logo-intuit.svg',
+        bgColor: 'bg-white',
+        textColor: 'text-green-700'
+      },
+    ],
     status: 'coming',
   },
 ]
@@ -33,8 +91,8 @@ export function IntegrationsSection() {
     <section className="py-16 sm:py-24 lg:py-32 bg-stone-50">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <SectionTitle
-          title="Seamlessly connect"
-          subtitle="Watchdog automatically monitors invoices from your accounting system"
+          title="Use what you already have"
+          subtitle="Automatically monitor incoming invoices from your existing accounting system"
         />
 
         <div className="mx-auto mt-16 max-w-6xl">
@@ -58,25 +116,52 @@ export function IntegrationsSection() {
                   )}
                 </div>
 
-                {/* Flag Icon */}
+                {/* Logo Bubbles */}
                 <div className="mb-4">
-                  <div className="h-16 w-16 rounded-full bg-stone-100 flex items-center justify-center">
-                    <span className="text-3xl" role="img" aria-label={`${integration.country} flag`}>
-                      {integration.flag}
-                    </span>
+                  <div className="flex gap-2">
+                    {integration.logos.map((logo, index) => (
+                      <div
+                        key={`${integration.name}-${index}`}
+                        className={`h-16 w-16 rounded-full ${logo.bgColor} flex items-center justify-center flex-shrink-0 border border-stone-100`}
+                        title={logo.name}
+                      >
+                        {logo.type === 'image' ? (
+                          <div className="relative h-14 w-14">
+                            <Image
+                              src={logo.src}
+                              alt={`${logo.name} logo`}
+                              fill
+                              className="object-contain p-1"
+                            />
+                          </div>
+                        ) : (
+                          <span
+                            className={`text-xl font-bold ${logo.textColor}`}
+                            role="img"
+                            aria-label={`${logo.name} logo`}
+                          >
+                            {logo.icon}
+                          </span>
+                        )}
+                      </div>
+                    ))}
                   </div>
                 </div>
 
                 {/* Content */}
                 <div className="mb-4">
                   <div className="flex items-center gap-2 mb-2">
+                  <span
+                      className="text-sm"
+                      role="img"
+                      aria-label={`${integration.country} flag`}
+                    >
+                      {integration.country === 'Norway' ? '🇳🇴' : '🇺🇸'}
+                    </span>
                     <h3 className="text-lg font-semibold text-stone-900">
                       {integration.name}
                     </h3>
                   </div>
-                  <p className="text-xs text-stone-500 mb-2 font-medium">
-                    {integration.country}
-                  </p>
                   <p className="text-sm text-stone-600">
                     {integration.description}
                   </p>
@@ -87,9 +172,10 @@ export function IntegrationsSection() {
 
           {/* Call to Action */}
           <div className="mt-12 text-center">
-            <p className="text-stone-600 mb-6">
-              Don&apos;t see your accounting software? We&apos;re constantly
-              adding new integrations.
+            <p className="text-stone-600">
+              Don&apos;t see your accounting software? 
+              Contact us at <a href="mailto:contact@supersolve.ai" className="text-blue-600 hover:underline">contact@supersolve.ai </a> 
+              to request an integration.
             </p>
           </div>
         </div>

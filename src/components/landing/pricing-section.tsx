@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils'
 const pricingTiers = [
   {
     name: 'Free',
-    price: '$0',
+    price: '0 NOK',
     period: '/month',
     description: 'For the curious who want to try Watchdog',
     invoiceLimit: 'Includes 500 invoice scans and three alerts',
@@ -14,8 +14,8 @@ const pricingTiers = [
   },
   {
     name: 'Pro',
-    price: '$1000',
-    period: '/month', 
+    price: '10,000 NOK',
+    period: '/month',
     description: 'For businesses wanting to boost their bottom line',
     invoiceLimit: 'Includes 10,000 invoice scans and unlimited alerts',
     cta: 'Get started',
@@ -38,7 +38,7 @@ export function PricingSection() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <SectionTitle
           title="Simple, transparent pricing"
-          subtitle="Choose the plan that fits your business needs. Start free and scale as you grow."
+          subtitle="Choose the plan that fits your business needs"
         />
 
         <div className="mx-auto mt-16 grid max-w-lg grid-cols-1 gap-8 lg:max-w-none lg:grid-cols-3">

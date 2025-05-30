@@ -1,4 +1,5 @@
 export { HeroSection } from './hero-section'
+export { BenefitsSection } from './benefits-section'
 export { HowItWorksSection } from './how-it-works-section'
 // export { TestimonialsSection } from './testimonials-section'
 export { IntegrationsSection } from './integrations-section'

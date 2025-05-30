@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 const investors = [
   { name: 'A&CO', logo: '/logo-a&co.png' },
-  { name: 'Open AI', logo: '/logo-openAI.png' },
+  { name: 'Open AI', logo: '/logo-openAI.svg' },
   { name: 'Cognite', logo: '/logo-cognite.png' },
 ]
 
@@ -20,23 +20,20 @@ export function AboutSection() {
         <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-center">
           <div className="lg:pr-8">
             <h3 className="text-xl font-md tracking-tight text-stone-900 sm:text-3xl">
-              Our goal: permanently remove invoice errors from modern business
+              We want permanently remove invoice errors from society
             </h3>
             <p className="mt-4 text-lg leading-8 text-stone-600">
-              <span className="font-bold">
-                CFOs, controllers, and procurers have the impossible
-                responsibility{' '}
-              </span>
-              of monitoring hundreds of thousands of order lines. This forces
-              them to either blindly trust the numbers or perform time-consuming
-              ad hoc analyses to check for errors.
+              Invoicing errors is a completely <span className="font-bold"> unnecessary societal problem </span> 
+              that costs businesses and government millions of NOK every year in direct losses and time spent 
+              on manual checks.
             </p>
             <p className="mt-4 text-lg leading-8 text-stone-600">
-              <span className="font-bold">
-                We are building Watchdog to get the best of both worlds
-              </span>
-              , allowing CFOs, controllers, and procurers to monitor every order
-              line while reducing time spent from hours to minutes.
+              It is <span className="font-bold"> impossible for CFOs, controllers, and procurers to monitor </span> hundreds of thousands of order lines, forcing them to either blindly trust invoices or dedicate many hours to ad hoc error checks.
+            </p>
+            <p className="mt-4 text-lg leading-8 text-stone-600">
+              We are building Watchdog to get the best of both worlds:
+              allowing CFOs, controllers, and procurers to <span className="font-bold"> monitor every order
+              line while reducing time </span> spent from hours to minutes.
             </p>
           </div>
           <div className="flex justify-center lg:justify-end">

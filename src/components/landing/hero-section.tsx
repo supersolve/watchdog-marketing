@@ -14,7 +14,7 @@ export function HeroSection() {
                 Get your <span className="font-serif">Financial Watchdog</span>
               </h1>
               <p className="mt-6 text-lg leading-8 text-stone-600 sm:text-xl">
-                <span className="text-accent font-medium">
+                <span className="text-stone-900 font-bold">
                   Never overpay again.
                 </span>{' '}
                 Watchdog automatically scans your invoices, compares them to
@@ -33,7 +33,7 @@ export function HeroSection() {
           {/* Image */}
           <div className="flex justify-center lg:justify-end">
             <Image
-              src="/watchdog1.png"
+              src="/watchdog.svg"
               alt="Financial Watchdog Dashboard Preview"
               width={400}
               height={400}

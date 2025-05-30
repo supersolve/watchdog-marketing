@@ -1,5 +1,6 @@
 import {
   HeroSection,
+  BenefitsSection,
   HowItWorksSection,
   // TestimonialsSection,
   IntegrationsSection,
@@ -11,6 +12,7 @@ export default function Home() {
   return (
     <main>
       <HeroSection />
+      <BenefitsSection />
       <HowItWorksSection />
       {/* <TestimonialsSection /> */}
       <IntegrationsSection />

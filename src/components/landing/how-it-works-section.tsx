@@ -10,8 +10,7 @@ const steps = [
   {
     number: 1,
     title: 'Connect Your Data',
-    description:
-      'Connect to accounting software or upload directly',
+    description: 'Connect to accounting software or upload directly',
     details:
       'Connect Watchdog to your accounting software or upload your invoices and agreements directly.  Our API integration ensures your data stays protected.',
     image: '/webapp-upload.png',
@@ -19,19 +18,17 @@ const steps = [
   {
     number: 2,
     title: 'Let Watchdog Work',
-    description:
-      'Let Watchdog scan archived and incoming supplier invoices',
+    description: 'Let Watchdog scan archived and incoming supplier invoices',
     details:
-      'Let Watchdog continually monitor your invoices and agreements for errors or unexpected changes - such as price jumps or missing discounts.',
+      'Let Watchdog continually monitor your supplier invoices and agreements for errors or unexpected changes - such as price jumps or missing discounts.',
     image: '/webapp-invoices.png',
   },
   {
     number: 3,
     title: 'Get Instant Alerts',
-    description:
-      'Get alerts when Watchdog detects an issue',
+    description: 'Get alerts when Watchdog detects an issue',
     details:
-      'Get alerts when Watchdog detects an issue and get recommendations on how to resolve it.',
+      'Get alerts when Watchdog detects an issue and receive recommendations on how to resolve it.',
     image: '/webapp-alerts.png',
   },
 ]
@@ -47,11 +44,11 @@ export function HowItWorksSection() {
     steps.find((step) => step.number === expandedStep) || steps[0]
 
   return (
-    <section className="py-16 sm:py-24 lg:py-32">
+    <section className="py-16 sm:py-24 lg:py-32 bg-stone-50">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <SectionTitle
           title="How Watchdog works"
-          subtitle="Upload your data and let Watchdog do the rest"
+          subtitle="Upload your data and let Watchdog work for you"
         />
 
         <div className="mx-auto mt-16 max-w-6xl">
