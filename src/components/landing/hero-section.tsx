@@ -22,10 +22,12 @@ export function HeroSection() {
                 bottom line.
               </p>
               <div className="mt-10 flex items-center gap-x-6">
-                <Button variant="accent" size="lg">
-                  Try Watchdog
-                  <ArrowRightIcon className="w-4 h-4" />
-                </Button>
+                <a href="https://app.thewatchdog.no/sign-up" rel="noopener noreferrer">
+                  <Button variant="accent" size="lg">
+                    Try Watchdog
+                    <ArrowRightIcon className="w-4 h-4" />
+                  </Button>
+                </a>
               </div>
             </div>
           </div>
@@ -33,7 +35,7 @@ export function HeroSection() {
           {/* Image */}
           <div className="flex justify-center lg:justify-end">
             <Image
-              src="/watchdog.svg"
+              src="/watchdog0.svg"
               alt="Financial Watchdog Dashboard Preview"
               width={400}
               height={400}

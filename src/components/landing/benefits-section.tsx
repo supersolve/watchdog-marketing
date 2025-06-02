@@ -1,23 +1,24 @@
-import { CheckCircleIcon, TrendingDownIcon, SearchIcon, ClockIcon } from 'lucide-react'
+import { TrendingDownIcon, SearchIcon, ClockIcon } from 'lucide-react'
 
 const benefits = [
-    {
+  {
     icon: SearchIcon,
-    title: 'Track every order line',
-    description: 'Track changes across hundreds of thousands of order lines from suppliers in real-time.',
-    },
-    {
+    title: 'To track every order line',
+    description:
+      'Track changes across hundreds of thousands of order lines from suppliers in real-time.',
+  },
+  {
     icon: TrendingDownIcon,
     title: 'To save costs',
-    description: 'Identify costly invoice errors and ensure your negotiated terms with suppliers are met.',
+    description:
+      'Identify costly invoice errors and ensure your negotiated terms with suppliers are met.',
   },
   {
     icon: ClockIcon,
     title: 'To save time',
-    description: 'Stop spending hours on sparse, ad hoc errors checks, and focus on running your business.',
+    description:
+      'Stop spending hours on sparse, ad hoc errors checks, and focus on running your business.',
   },
-
-
 ]
 
 export function BenefitsSection() {
@@ -33,10 +34,7 @@ export function BenefitsSection() {
         <div className="mx-auto mt-16 max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {benefits.map((benefit) => (
-              <div
-                key={benefit.title}
-                className="text-center"
-              >
+              <div key={benefit.title} className="text-center">
                 {/* Icon */}
                 <div className="mx-auto h-16 w-16 rounded-full bg-accent/10 flex items-center justify-center mb-6">
                   <benefit.icon className="h-8 w-8 text-accent" />
@@ -58,4 +56,4 @@ export function BenefitsSection() {
       </div>
     </section>
   )
-} 
+}

@@ -15,9 +15,11 @@ export function Footer() {
               before they impact your bottom line.
             </p>
             <div className="flex space-x-4">
-              <Button variant="accent" size="sm">
-                Start Free Trial
-              </Button>
+              <a href="https://app.thewatchdog.no/sign-up" rel="noopener noreferrer">
+                <Button variant="accent" size="sm">
+                  Try Watchdog
+                </Button>
+              </a>
               <Button variant="outline" size="sm">
                 Contact Sales
               </Button>

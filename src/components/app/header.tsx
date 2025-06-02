@@ -46,12 +46,12 @@ const MobileMenu = ({
             Sign in
           </Button>
         </a>
-        <a href="https://app.thewatchdog.no" rel="noopener noreferrer">
+        <a href="https://app.thewatchdog.no/sign-up" rel="noopener noreferrer">
           <Button
             className="justify-start bg-tertiary text-tertiary-foreground"
             onClick={onClose}
           >
-            Try for free
+            Try Watchdog
           </Button>
         </a>
       </div>
@@ -93,7 +93,10 @@ export function Header() {
         {/* Desktop Navigation */}
         {!isMobile && (
           <div className="flex items-center space-x-4">
-            <a href="https://app.thewatchdog.no/sign-in" rel="noopener noreferrer">
+            <a
+              href="https://app.thewatchdog.no/sign-in"
+              rel="noopener noreferrer"
+            >
               <Button
                 variant="outline"
                 className="bg-transparent hover:bg-transparent"
@@ -101,8 +104,11 @@ export function Header() {
                 Sign in
               </Button>
             </a>
-            <a href="https://app.thewatchdog.no/sign-up" rel="noopener noreferrer">
-              <Button variant="accent">Try for free</Button>
+            <a
+              href="https://app.thewatchdog.no/sign-up"
+              rel="noopener noreferrer"
+            >
+              <Button variant="accent">Try Watchdog</Button>
             </a>
           </div>
         )}

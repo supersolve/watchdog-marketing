@@ -41,15 +41,15 @@ const integrations: Integration[] = [
         type: 'image',
         src: '/logo-tripletex.png',
         bgColor: 'bg-white',
-        textColor: 'text-blue-600'
-      }
+        textColor: 'text-blue-600',
+      },
     ],
     status: 'available',
   },
   {
     name: 'PowerOffice, Fiken, and more',
     description:
-      'Support for Power Office, Fiken, and more are updated continually',
+      'We are continually updating support for PowerOffice, Fiken, and more',
     country: 'Norway',
     logos: [
       {
@@ -57,14 +57,14 @@ const integrations: Integration[] = [
         type: 'image',
         src: '/logo-poweroffice.png',
         bgColor: 'bg-white',
-        textColor: 'text-green-600'
+        textColor: 'text-green-600',
       },
       {
         name: 'Fiken',
         type: 'image',
         src: '/logo-fiken.svg',
         bgColor: 'bg-white',
-        textColor: 'text-purple-600'
+        textColor: 'text-purple-600',
       },
     ],
     status: 'coming',
@@ -79,7 +79,7 @@ const integrations: Integration[] = [
         type: 'image',
         src: '/logo-intuit.svg',
         bgColor: 'bg-white',
-        textColor: 'text-green-700'
+        textColor: 'text-green-700',
       },
     ],
     status: 'coming',
@@ -151,7 +151,7 @@ export function IntegrationsSection() {
                 {/* Content */}
                 <div className="mb-4">
                   <div className="flex items-center gap-2 mb-2">
-                  <span
+                    <span
                       className="text-sm"
                       role="img"
                       aria-label={`${integration.country} flag`}
@@ -173,8 +173,13 @@ export function IntegrationsSection() {
           {/* Call to Action */}
           <div className="mt-12 text-center">
             <p className="text-stone-600">
-              Don&apos;t see your accounting software? 
-              Contact us at <a href="mailto:contact@supersolve.ai" className="text-blue-600 hover:underline">contact@supersolve.ai </a> 
+              Don&apos;t see your accounting software? Contact us at{' '}
+              <a
+                href="mailto:contact@supersolve.ai"
+                className="text-blue-600 hover:underline"
+              >
+                contact@supersolve.ai{' '}
+              </a>
               to request an integration.
             </p>
           </div>

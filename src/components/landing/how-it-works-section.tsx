@@ -10,7 +10,7 @@ const steps = [
   {
     number: 1,
     title: 'Connect Your Data',
-    description: 'Connect to accounting software or upload directly',
+    description: 'Connect your accounting software or upload directly',
     details:
       'Connect Watchdog to your accounting software or upload your invoices and agreements directly.  Our API integration ensures your data stays protected.',
     image: '/webapp-upload.png',
@@ -20,7 +20,7 @@ const steps = [
     title: 'Let Watchdog Work',
     description: 'Let Watchdog scan archived and incoming supplier invoices',
     details:
-      'Let Watchdog continually monitor your supplier invoices and agreements for errors or unexpected changes - such as price jumps or missing discounts.',
+      'Let Watchdog continually monitor your supplier invoices and agreements for errors, such as price jumps or missing discounts.',
     image: '/webapp-invoices.png',
   },
   {
