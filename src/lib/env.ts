@@ -1,15 +1,10 @@
 // Environment variable validation utility
 
+import { EnvironmentError } from './errors'
+
 interface EnvironmentConfig {
   RESEND_API_KEY: string
   NODE_ENV: 'development' | 'production' | 'test'
-}
-
-class EnvironmentError extends Error {
-  constructor(message: string) {
-    super(message)
-    this.name = 'EnvironmentError'
-  }
 }
 
 function validateEnvironment(): EnvironmentConfig {

@@ -3,78 +3,46 @@
 import { useState } from 'react'
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '../ui/dialog'
 import { Button } from '../ui/button'
+import { useForm } from '../hooks'
+import { validateDemoRequest, DemoRequestData } from '@/lib/validations'
 
 interface DemoRequestModalProps {
   isOpen: boolean
   onClose: () => void
+  pricingTier?: string
 }
 
-function validateEmail(email: string): boolean {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-  return emailRegex.test(email) && email.length <= 254
+// Wrapper function to match form hook interface
+const validateForm = (data: DemoRequestData) => {
+  const result = validateDemoRequest(data)
+  return result.errors
 }
 
-function validateCompanyName(name: string): boolean {
-  return name.trim().length >= 1 && name.length <= 100
-}
-
-export function DemoRequestModal({ isOpen, onClose }: DemoRequestModalProps) {
-  const [formData, setFormData] = useState({
-    companyName: '',
-    email: '',
-  })
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isSubmitted, setIsSubmitted] = useState(false)
+export function DemoRequestModal({
+  isOpen,
+  onClose,
+  pricingTier,
+}: DemoRequestModalProps) {
   const [privacyConsent, setPrivacyConsent] = useState(false)
-  const [error, setError] = useState('')
-  const [validationErrors, setValidationErrors] = useState({
-    companyName: '',
-    email: '',
-  })
 
-  const validateForm = () => {
-    const errors = {
+  const form = useForm<DemoRequestData>({
+    initialValues: {
       companyName: '',
       email: '',
-    }
+      pricingTier: pricingTier || '',
+    },
+    validate: validateForm,
+    onSubmit: async (values) => {
+      if (!privacyConsent) {
+        throw new Error('Please consent to data processing to proceed')
+      }
 
-    if (!validateCompanyName(formData.companyName)) {
-      errors.companyName = 'Company name must be between 1 and 100 characters'
-    }
-
-    if (!validateEmail(formData.email)) {
-      errors.email = 'Please provide a valid email address'
-    }
-
-    setValidationErrors(errors)
-    return !errors.companyName && !errors.email
-  }
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-
-    if (!validateForm()) {
-      return
-    }
-
-    if (!privacyConsent) {
-      setError('Please consent to data processing to proceed')
-      return
-    }
-
-    setIsSubmitting(true)
-    setError('')
-
-    try {
       const response = await fetch('/api/demo-request', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          companyName: formData.companyName.trim(),
-          email: formData.email.trim(),
-        }),
+        body: JSON.stringify(values),
       })
 
       const result = await response.json()
@@ -88,51 +56,24 @@ export function DemoRequestModal({ isOpen, onClose }: DemoRequestModalProps) {
         throw new Error(result.error || 'Failed to submit demo request')
       }
 
-      setIsSubmitted(true)
-
-      // Reset form after 3 seconds and close modal
+      // Reset form and close modal after 3 seconds
       setTimeout(() => {
-        setIsSubmitted(false)
-        setFormData({ companyName: '', email: '' })
-        setPrivacyConsent(false)
-        setValidationErrors({ companyName: '', email: '' })
-        onClose()
+        handleClose()
       }, 3000)
-    } catch (err) {
-      // Don't log potentially sensitive data
-      setError(
-        err instanceof Error ? err.message : 'An unexpected error occurred'
-      )
-    } finally {
-      setIsSubmitting(false)
+    },
+  })
+
+  const handleClose = () => {
+    if (!form.isSubmitting) {
+      form.reset()
+      setPrivacyConsent(false)
+      onClose()
     }
   }
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }))
-
-    // Clear validation errors when user starts typing
-    if (validationErrors[name as keyof typeof validationErrors]) {
-      setValidationErrors((prev) => ({
-        ...prev,
-        [name]: '',
-      }))
-    }
-  }
-
-  const handleClose = () => {
-    if (!isSubmitting) {
-      setFormData({ companyName: '', email: '' })
-      setIsSubmitted(false)
-      setError('')
-      setPrivacyConsent(false)
-      setValidationErrors({ companyName: '', email: '' })
-      onClose()
-    }
+    form.setValue(name as keyof DemoRequestData, value)
   }
 
   return (
@@ -142,7 +83,7 @@ export function DemoRequestModal({ isOpen, onClose }: DemoRequestModalProps) {
       </DialogHeader>
 
       <DialogContent>
-        {isSubmitted ? (
+        {form.isSubmitted ? (
           <div className="text-center py-4">
             <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
               <svg
@@ -172,13 +113,13 @@ export function DemoRequestModal({ isOpen, onClose }: DemoRequestModalProps) {
               Write your email and we will help you get started.
             </p>
 
-            {error && (
+            {form.generalError && (
               <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-md">
-                <p className="text-sm text-red-600">{error}</p>
+                <p className="text-sm text-red-600">{form.generalError}</p>
               </div>
             )}
 
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={form.handleSubmit} className="space-y-4">
               <div>
                 <label
                   htmlFor="companyName"
@@ -190,20 +131,20 @@ export function DemoRequestModal({ isOpen, onClose }: DemoRequestModalProps) {
                   type="text"
                   id="companyName"
                   name="companyName"
-                  value={formData.companyName}
+                  value={form.values.companyName}
                   onChange={handleInputChange}
                   required
                   maxLength={100}
                   className={`w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent transition-colors ${
-                    validationErrors.companyName
+                    form.errors.companyName
                       ? 'border-red-300'
                       : 'border-stone-300'
                   }`}
-                  placeholder="Your company name"
+                  placeholder="Enter your company name"
                 />
-                {validationErrors.companyName && (
+                {form.errors.companyName && (
                   <p className="mt-1 text-sm text-red-600">
-                    {validationErrors.companyName}
+                    {form.errors.companyName}
                   </p>
                 )}
               </div>
@@ -219,20 +160,18 @@ export function DemoRequestModal({ isOpen, onClose }: DemoRequestModalProps) {
                   type="email"
                   id="email"
                   name="email"
-                  value={formData.email}
+                  value={form.values.email}
                   onChange={handleInputChange}
                   required
                   maxLength={254}
                   className={`w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent transition-colors ${
-                    validationErrors.email
-                      ? 'border-red-300'
-                      : 'border-stone-300'
+                    form.errors.email ? 'border-red-300' : 'border-stone-300'
                   }`}
-                  placeholder="your@company.com"
+                  placeholder="Enter your email address"
                 />
-                {validationErrors.email && (
+                {form.errors.email && (
                   <p className="mt-1 text-sm text-red-600">
-                    {validationErrors.email}
+                    {form.errors.email}
                   </p>
                 )}
               </div>
@@ -240,14 +179,17 @@ export function DemoRequestModal({ isOpen, onClose }: DemoRequestModalProps) {
               <div className="flex items-start space-x-2">
                 <input
                   type="checkbox"
-                  id="privacy"
+                  id="privacyConsent"
                   checked={privacyConsent}
                   onChange={(e) => setPrivacyConsent(e.target.checked)}
-                  required
-                  className="mt-1"
+                  className="mt-0.5 h-4 w-4 text-accent border-stone-300 rounded focus:ring-accent"
                 />
-                <label htmlFor="privacy" className="text-sm text-stone-700">
-                  I consent to my data being processed to schedule a demo.{' '}
+                <label
+                  htmlFor="privacyConsent"
+                  className="text-sm text-stone-600"
+                >
+                  I consent to the processing of my personal data for demo
+                  scheduling purposes as described in the{' '}
                   <a
                     href="/legal/privacy"
                     className="text-accent hover:underline"
@@ -256,43 +198,25 @@ export function DemoRequestModal({ isOpen, onClose }: DemoRequestModalProps) {
                   >
                     Privacy Policy
                   </a>
+                  .
                 </label>
               </div>
 
-              <div className="pt-4">
+              <div className="flex justify-end space-x-3 pt-4">
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={handleClose}
+                  disabled={form.isSubmitting}
+                >
+                  Cancel
+                </Button>
                 <Button
                   type="submit"
                   variant="accent"
-                  className="w-full"
-                  disabled={isSubmitting || !privacyConsent}
+                  disabled={form.isSubmitting || !privacyConsent}
                 >
-                  {isSubmitting ? (
-                    <div className="flex items-center">
-                      <svg
-                        className="animate-spin -ml-1 mr-3 h-4 w-4 text-white"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                      >
-                        <circle
-                          className="opacity-25"
-                          cx="12"
-                          cy="12"
-                          r="10"
-                          stroke="currentColor"
-                          strokeWidth="4"
-                        ></circle>
-                        <path
-                          className="opacity-75"
-                          fill="currentColor"
-                          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                        ></path>
-                      </svg>
-                      Submitting...
-                    </div>
-                  ) : (
-                    'Request Demo'
-                  )}
+                  {form.isSubmitting ? 'Submitting...' : 'Request Demo'}
                 </Button>
               </div>
             </form>
