@@ -8,28 +8,25 @@ const pricingTiers = [
     name: 'Free',
     price: 'NOK 0',
     period: '/per month',
-    description: 'For the curious who want to try Watchdog',
+    description: 'For the curious who want to request a demo',
     cta: 'Try for free',
     url: 'https://app.thewatchdog.no/sign-up',
     popular: false,
-    features: [
-      '500 free invoices',
-      'No credit card required'
-    ]
+    features: ['500 free invoices', 'No credit card required'],
   },
   {
     name: 'Pro',
     price: 'NOK 995',
     period: '/per month',
     description: 'For businesses wanting to boost their bottom line',
-    cta: 'Try Watchdog',
+    cta: 'Request Demo',
     url: 'https://app.thewatchdog.no/sign-up',
     popular: true,
     features: [
       '1000 monthly invoices included',
       '5 NOK / additional invoice',
-      'No credit card required'
-    ]
+      'No credit card required',
+    ],
   },
   {
     name: 'Enterprise',
@@ -42,8 +39,8 @@ const pricingTiers = [
     features: [
       'Unlimited invoices',
       'Single sign-on (SSO)',
-      'Dedicated account manager'
-    ]
+      'Dedicated account manager',
+    ],
   },
 ]
 
@@ -99,7 +96,10 @@ export function PricingSection() {
               <div className="px-8 py-6 flex-grow">
                 <div className="grid grid-cols-1 gap-3">
                   {tier.features.map((feature, featureIndex) => (
-                    <div key={featureIndex} className="flex items-center text-sm">
+                    <div
+                      key={featureIndex}
+                      className="flex items-center text-sm"
+                    >
                       <Check className="h-4 w-4 text-accent mr-3 flex-shrink-0" />
                       <span className="text-stone-700">{feature}</span>
                     </div>

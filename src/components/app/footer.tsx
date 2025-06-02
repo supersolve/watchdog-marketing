@@ -1,6 +1,12 @@
+'use client'
+
+import { useState } from 'react'
 import { Button } from '../ui/button'
+import { DemoRequestModal } from './demo-request-modal'
 
 export function Footer() {
+  const [isDemoModalOpen, setIsDemoModalOpen] = useState(false)
+
   return (
     <footer className="bg-tertiary text-tertiary-foreground">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -15,11 +21,13 @@ export function Footer() {
               before they impact your bottom line.
             </p>
             <div className="flex space-x-4">
-              <a href="https://app.thewatchdog.no/sign-up" rel="noopener noreferrer">
-                <Button variant="accent" size="sm">
-                  Try Watchdog
-                </Button>
-              </a>
+              <Button 
+                variant="accent" 
+                size="sm"
+                onClick={() => setIsDemoModalOpen(true)}
+              >
+                Request Demo
+              </Button>
               <Button variant="outline" size="sm">
                 Contact Sales
               </Button>
@@ -75,6 +83,12 @@ export function Footer() {
           </div>
         </div>
       </div>
+
+      {/* Demo Request Modal */}
+      <DemoRequestModal 
+        isOpen={isDemoModalOpen}
+        onClose={() => setIsDemoModalOpen(false)}
+      />
     </footer>
   )
 }

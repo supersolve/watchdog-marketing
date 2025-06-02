@@ -23,17 +23,17 @@ export function AboutSection() {
               We want to permanently remove invoice errors from society
             </h3>
             <p className="mt-4 text-lg leading-8 text-stone-600">
-              Businesses lose millions of NOK every year{' '}
-              due to invoicing errors. 
+              Businesses lose millions of NOK every year due to invoicing
+              errors.
             </p>
             <p className="mt-4 text-lg leading-8 text-stone-600">
-              Previously, financial teams had to either 
-              spend long hours manually analyzing order lines or blindly trust invoices from their suppliers. 
+              Previously, financial teams had to either spend long hours
+              manually analyzing order lines or blindly trust invoices from
+              their suppliers.
             </p>
             <p className="mt-4 text-lg leading-8 text-stone-600">
-              Now, we are building Watchdog to allow
-              CFOs, controllers, and procurers to{' '}
-              monitor every order line and cut time on analysis{' '}
+              Now, we are building Watchdog to allow CFOs, controllers, and
+              procurers to monitor every order line and cut time on analysis{' '}
               from hours to seconds.
             </p>
           </div>
