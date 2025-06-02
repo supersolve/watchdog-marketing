@@ -63,7 +63,7 @@ export function AboutSection() {
             </h3>
           </div>
 
-          <div className="mx-auto mt-12 grid max-w-lg grid-cols-2 gap-8 lg:max-w-none lg:grid-cols-3">
+          <div className="mx-auto mt-12 grid max-w-lg grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8 lg:max-w-none lg:grid-cols-3">
             {investors.map((investor) => (
               <div
                 key={investor.name}

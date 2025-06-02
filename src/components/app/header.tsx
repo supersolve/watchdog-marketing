@@ -39,18 +39,18 @@ const MobileMenu = ({
 
   return (
     <div className="absolute top-full left-0 right-0 bg-tertiary border-t border-border shadow-lg z-50 mx-4 sm:mx-6 lg:mx-8 rounded-b-lg">
-      <div className="flex flex-col p-4 space-y-3">
+      <div className="flex flex-col p-4 space-y-4">
         <a href="https://app.thewatchdog.no" rel="noopener noreferrer">
           <Button
             variant="ghost"
-            className="justify-start w-full"
+            className="justify-start w-full h-12 text-base"
             onClick={onClose}
           >
             Sign in
           </Button>
         </a>
         <Button
-          className="justify-start bg-tertiary text-tertiary-foreground"
+          className="justify-start bg-tertiary text-tertiary-foreground h-12 text-base"
           onClick={() => {
             onRequestDemo()
             onClose()
