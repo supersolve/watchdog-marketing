@@ -6,6 +6,15 @@ import { ValidationError, formatErrorResponse, withTimeout } from '@/lib/errors'
 
 export async function POST(request: NextRequest) {
   try {
+    // Check environment variables first
+    if (!process.env.RESEND_API_KEY) {
+      console.error('RESEND_API_KEY environment variable is missing')
+      return NextResponse.json(
+        { error: 'Email service is not configured properly' },
+        { status: 503 }
+      )
+    }
+
     // Apply middleware checks (environment validation, bot detection, rate limiting)
     applyMiddleware(request, ['RESEND_API_KEY'])
 
@@ -43,6 +52,15 @@ export async function POST(request: NextRequest) {
     })
   } catch (error) {
     console.error('Error processing demo request:', error)
+
+    // Enhanced error logging for debugging
+    if (error instanceof Error) {
+      console.error('Error details:', {
+        name: error.name,
+        message: error.message,
+        stack: error.stack,
+      })
+    }
 
     const errorResponse = formatErrorResponse(error)
     return NextResponse.json(

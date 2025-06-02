@@ -34,7 +34,7 @@ const steps = [
 ]
 
 export function HowItWorksSection() {
-  const [expandedStep, setExpandedStep] = useState<number | null>(1)
+  const [expandedStep, setExpandedStep] = useState<number | null>(null)
 
   const toggleStep = (stepNumber: number) => {
     setExpandedStep(expandedStep === stepNumber ? null : stepNumber)

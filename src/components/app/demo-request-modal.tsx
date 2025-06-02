@@ -37,29 +37,42 @@ export function DemoRequestModal({
         throw new Error('Please consent to data processing to proceed')
       }
 
-      const response = await fetch('/api/demo-request', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(values),
-      })
+      console.log('Submitting demo request:', values)
 
-      const result = await response.json()
+      try {
+        const response = await fetch('/api/demo-request', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(values),
+        })
 
-      if (!response.ok) {
-        if (response.status === 429) {
-          throw new Error(
-            'Too many requests. Please try again in a few minutes.'
-          )
+        const result = await response.json()
+        console.log('API response:', { status: response.status, result })
+
+        if (!response.ok) {
+          if (response.status === 429) {
+            throw new Error(
+              'Too many requests. Please try again in a few minutes.'
+            )
+          }
+          if (response.status === 503) {
+            throw new Error(
+              'Email service is temporarily unavailable. Please try again later.'
+            )
+          }
+          throw new Error(result.error || 'Failed to submit demo request')
         }
-        throw new Error(result.error || 'Failed to submit demo request')
-      }
 
-      // Reset form and close modal after 3 seconds
-      setTimeout(() => {
-        handleClose()
-      }, 3000)
+        // Reset form and close modal after 3 seconds
+        setTimeout(() => {
+          handleClose()
+        }, 3000)
+      } catch (error) {
+        console.error('Form submission error:', error)
+        throw error
+      }
     },
   })
 
@@ -75,6 +88,14 @@ export function DemoRequestModal({
     const { name, value } = e.target
     form.setValue(name as keyof DemoRequestData, value)
   }
+
+  // Debug consent checkbox visibility
+  console.log('Modal state:', {
+    isOpen,
+    isSubmitted: form.isSubmitted,
+    privacyConsent,
+    shouldShowForm: !form.isSubmitted,
+  })
 
   return (
     <Dialog isOpen={isOpen} onClose={handleClose}>
@@ -176,17 +197,24 @@ export function DemoRequestModal({
                 )}
               </div>
 
-              <div className="flex items-start space-x-2">
+              {/* Consent checkbox - always visible when form is shown */}
+              <div
+                className="flex items-start space-x-2"
+                data-testid="consent-checkbox"
+              >
                 <input
                   type="checkbox"
                   id="privacyConsent"
                   checked={privacyConsent}
-                  onChange={(e) => setPrivacyConsent(e.target.checked)}
+                  onChange={(e) => {
+                    console.log('Consent checkbox changed:', e.target.checked)
+                    setPrivacyConsent(e.target.checked)
+                  }}
                   className="mt-0.5 h-4 w-4 text-accent border-stone-300 rounded focus:ring-accent"
                 />
                 <label
                   htmlFor="privacyConsent"
-                  className="text-sm text-stone-600"
+                  className="text-sm text-stone-600 leading-relaxed cursor-pointer"
                 >
                   I consent to the processing of my personal data for demo
                   scheduling purposes as described in the{' '}
@@ -202,12 +230,13 @@ export function DemoRequestModal({
                 </label>
               </div>
 
-              <div className="flex justify-end space-x-3 pt-4">
+              <div className="flex flex-col sm:flex-row justify-end space-y-3 sm:space-y-0 sm:space-x-3 pt-4">
                 <Button
                   type="button"
                   variant="outline"
                   onClick={handleClose}
                   disabled={form.isSubmitting}
+                  className="w-full sm:w-auto"
                 >
                   Cancel
                 </Button>
@@ -215,6 +244,7 @@ export function DemoRequestModal({
                   type="submit"
                   variant="accent"
                   disabled={form.isSubmitting || !privacyConsent}
+                  className="w-full sm:w-auto"
                 >
                   {form.isSubmitting ? 'Submitting...' : 'Request Demo'}
                 </Button>
