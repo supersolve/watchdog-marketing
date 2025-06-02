@@ -35,16 +35,18 @@ export function Dialog({ isOpen, onClose, children, className }: DialogProps) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center">
       {/* Backdrop with blur */}
-      <div 
+      <div
         className="absolute inset-0 bg-black/50 backdrop-blur-sm"
         onClick={onClose}
       />
-      
+
       {/* Dialog content */}
-      <div className={cn(
-        "relative bg-white rounded-lg shadow-xl max-w-md w-full mx-4 max-h-[90vh] overflow-auto",
-        className
-      )}>
+      <div
+        className={cn(
+          'relative bg-white rounded-lg shadow-xl max-w-md w-full mx-4 max-h-[90vh] overflow-auto',
+          className
+        )}
+      >
         {/* Close button */}
         <button
           onClick={onClose}
@@ -53,7 +55,7 @@ export function Dialog({ isOpen, onClose, children, className }: DialogProps) {
         >
           <X className="h-5 w-5 text-stone-500" />
         </button>
-        
+
         {children}
       </div>
     </div>
@@ -66,11 +68,7 @@ interface DialogHeaderProps {
 }
 
 export function DialogHeader({ children, className }: DialogHeaderProps) {
-  return (
-    <div className={cn("px-6 pt-6 pb-4", className)}>
-      {children}
-    </div>
-  )
+  return <div className={cn('px-6 pt-6 pb-4', className)}>{children}</div>
 }
 
 interface DialogTitleProps {
@@ -80,7 +78,7 @@ interface DialogTitleProps {
 
 export function DialogTitle({ children, className }: DialogTitleProps) {
   return (
-    <h2 className={cn("text-xl font-semibold text-stone-900", className)}>
+    <h2 className={cn('text-xl font-semibold text-stone-900', className)}>
       {children}
     </h2>
   )
@@ -92,9 +90,5 @@ interface DialogContentProps {
 }
 
 export function DialogContent({ children, className }: DialogContentProps) {
-  return (
-    <div className={cn("px-6 pb-6", className)}>
-      {children}
-    </div>
-  )
-} 
+  return <div className={cn('px-6 pb-6', className)}>{children}</div>
+}

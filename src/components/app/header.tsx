@@ -139,8 +139,8 @@ export function Header() {
 
         {/* Mobile Menu */}
         {isMobile && (
-          <MobileMenu 
-            isOpen={isMobileMenuOpen} 
+          <MobileMenu
+            isOpen={isMobileMenuOpen}
             onClose={closeMobileMenu}
             onRequestDemo={openDemoModal}
           />
@@ -148,10 +148,7 @@ export function Header() {
       </header>
 
       {/* Demo Request Modal */}
-      <DemoRequestModal 
-        isOpen={isDemoModalOpen}
-        onClose={closeDemoModal}
-      />
+      <DemoRequestModal isOpen={isDemoModalOpen} onClose={closeDemoModal} />
     </>
   )
 }

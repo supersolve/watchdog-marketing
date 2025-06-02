@@ -18,19 +18,20 @@ export function HeroSection() {
             <div className="lg:pr-8 lg:pt-4">
               <div className="lg:max-w-lg">
                 <h1 className="text-5xl tracking-tight sm:text-6xl lg:text-5xl xl:text-6xl">
-                  Get your <span className="font-serif">Financial Watchdog</span>
+                  Get your{' '}
+                  <span className="font-serif">Financial Watchdog</span>
                 </h1>
                 <p className="mt-6 text-lg leading-8 text-stone-600 sm:text-xl">
                   <span className="text-stone-900 font-bold">
                     Never overpay again.
                   </span>{' '}
                   Watchdog automatically scans your invoices, compares them to
-                  your agreements, and alerts you of errors before they hurt your
-                  bottom line.
+                  your agreements, and alerts you of errors before they hurt
+                  your bottom line.
                 </p>
                 <div className="mt-10 flex items-center gap-x-6">
-                  <Button 
-                    variant="accent" 
+                  <Button
+                    variant="accent"
                     size="lg"
                     onClick={() => setIsDemoModalOpen(true)}
                   >
@@ -57,7 +58,7 @@ export function HeroSection() {
       </section>
 
       {/* Demo Request Modal */}
-      <DemoRequestModal 
+      <DemoRequestModal
         isOpen={isDemoModalOpen}
         onClose={() => setIsDemoModalOpen(false)}
       />

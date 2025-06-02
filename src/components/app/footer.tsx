@@ -21,15 +21,12 @@ export function Footer() {
               before they impact your bottom line.
             </p>
             <div className="flex space-x-4">
-              <Button 
-                variant="accent" 
+              <Button
+                variant="accent"
                 size="sm"
                 onClick={() => setIsDemoModalOpen(true)}
               >
                 Request Demo
-              </Button>
-              <Button variant="outline" size="sm">
-                Contact Sales
               </Button>
             </div>
           </div>
@@ -85,7 +82,7 @@ export function Footer() {
       </div>
 
       {/* Demo Request Modal */}
-      <DemoRequestModal 
+      <DemoRequestModal
         isOpen={isDemoModalOpen}
         onClose={() => setIsDemoModalOpen(false)}
       />
