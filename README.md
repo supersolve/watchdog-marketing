@@ -20,6 +20,39 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Email Configuration
+
+This project uses [Resend](https://resend.com) for email notifications when demo requests are submitted.
+
+### Setup
+
+1. **Get a Resend API Key:**
+
+   - Sign up at [resend.com](https://resend.com)
+   - Go to [API Keys](https://resend.com/api-keys) and create a new API key
+   - Copy the API key
+
+2. **Configure Environment Variables:**
+
+   - Create a `.env.local` file in the root directory
+   - Add your Resend API key:
+
+   ```
+   RESEND_API_KEY=re_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+   ```
+
+3. **Domain Setup (Production):**
+   - For production, you'll need to verify your domain with Resend
+   - Update the `from` field in `/src/app/api/demo-request/route.ts` to use your verified domain
+
+### Demo Request Flow
+
+When users submit the demo request form:
+
+- Form data is sent to `/api/demo-request`
+- An email notification is sent to `demo@supersolve.ai`
+- The email includes company name, email address, and submission timestamp
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
