@@ -29,7 +29,7 @@ export class EmailService {
 
     try {
       const { error } = await this.resend.emails.send({
-        from: 'Demo Requests <noreply@demo.supersolve.ai>',
+        from: 'Demo Requests <noreply@email.thewatchdog.no>',
         to: ['demo@supersolve.ai'],
         subject: `New Demo Request from ${safeCompanyName}`,
         html: this.generateDemoRequestEmailTemplate(
