@@ -16,7 +16,11 @@ const pricingTiers = [
     cta: 'Request Demo',
     url: 'https://app.thewatchdog.no/sign-up',
     popular: false,
-    features: ['Includes 500 invoices', 'Includes 1 agreement', 'No credit card required'],
+    features: [
+      'Includes 500 invoices',
+      'Includes 1 agreement',
+      'No credit card required',
+    ],
   },
   {
     name: 'Pro',

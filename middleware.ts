@@ -39,7 +39,7 @@ export function middleware(request: NextRequest) {
     const allowedOrigins =
       process.env.NODE_ENV === 'production'
         ? [
-            'https://thewatchdog.no', 
+            'https://thewatchdog.no',
             'https://www.thewatchdog.no',
             'https://supersolve.ai',
             'https://www.supersolve.ai',
