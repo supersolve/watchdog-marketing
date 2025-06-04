@@ -24,7 +24,11 @@ export async function POST(request: NextRequest) {
     // Parse and validate request body
     const body = await request.json()
     const { companyName, email, pricingTier } = body as DemoRequestData
-    console.log('Request data:', { companyName, email, pricingTier: pricingTier || 'none' })
+    console.log('Request data:', {
+      companyName,
+      email,
+      pricingTier: pricingTier || 'none',
+    })
 
     // Validate input data
     const validation = validateDemoRequest({

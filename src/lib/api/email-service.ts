@@ -52,7 +52,7 @@ export class EmailService {
     } catch (error) {
       console.error('=== Email Service Error ===')
       console.error('Error in sendDemoRequestEmail:', error)
-      
+
       if (error instanceof ExternalServiceError) {
         console.error('Re-throwing ExternalServiceError')
         throw error
