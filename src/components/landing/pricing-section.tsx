@@ -12,37 +12,27 @@ const pricingTiers = [
     name: 'Free',
     price: 'NOK 0',
     period: '/per month',
-    description: 'For the curious who want to request a demo',
+    description: 'For the curious who want to try Watchdog',
     cta: 'Request Demo',
     url: 'https://app.thewatchdog.no/sign-up',
     popular: false,
-    features: ['500 free invoices', 'No credit card required'],
-  },
-  {
-    name: 'Pro',
-    price: 'NOK 995',
-    period: '/per month',
-    description: 'For businesses wanting to boost their bottom line',
-    cta: 'Request Demo',
-    url: 'https://app.thewatchdog.no/sign-up',
-    popular: true,
     features: [
-      '1000 monthly invoices included',
-      '5 NOK / additional invoice',
+      'Includes 500 invoices',
+      'Includes 1 agreement',
       'No credit card required',
     ],
   },
   {
-    name: 'Enterprise',
+    name: 'Pro',
     price: 'Custom',
     period: '',
-    description: 'For large businesses with specific needs',
+    description: 'For businesses wanting to improve their bottom line',
     cta: 'Request Demo',
     url: '#contact',
-    popular: false,
+    popular: true,
     features: [
       'Unlimited invoices',
-      'Single sign-on (SSO)',
+      'Unlimited agreements',
       'Dedicated account manager',
     ],
   },
@@ -160,7 +150,7 @@ export function PricingSection() {
           </div>
 
           {/* Desktop View - All Cards */}
-          <div className="hidden lg:grid mx-auto mt-16 max-w-none grid-cols-3 gap-8">
+          <div className="hidden lg:grid mx-auto mt-16 max-w-4xl grid-cols-2 gap-16">
             {pricingTiers.map((tier) => renderPricingCard(tier))}
           </div>
         </div>
