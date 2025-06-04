@@ -5,6 +5,7 @@ import { validateDemoRequest, DemoRequestData } from '@/lib/validations'
 import { ValidationError, formatErrorResponse, withTimeout } from '@/lib/errors'
 
 export async function POST(request: NextRequest) {
+  console.log('=== Demo Request API Called ===')
   try {
     // Check environment variables first
     if (!process.env.RESEND_API_KEY) {
@@ -14,13 +15,20 @@ export async function POST(request: NextRequest) {
         { status: 503 }
       )
     }
+    console.log('Environment variables check passed')
 
     // Apply middleware checks (environment validation, bot detection, rate limiting)
     applyMiddleware(request, ['RESEND_API_KEY'])
+    console.log('Middleware checks passed')
 
     // Parse and validate request body
     const body = await request.json()
     const { companyName, email, pricingTier } = body as DemoRequestData
+    console.log('Request data:', {
+      companyName,
+      email,
+      pricingTier: pricingTier || 'none',
+    })
 
     // Validate input data
     const validation = validateDemoRequest({
@@ -31,9 +39,12 @@ export async function POST(request: NextRequest) {
     if (!validation.isValid) {
       throw new ValidationError('Validation failed', validation.errors)
     }
+    console.log('Input validation passed')
 
     // Create email service and send demo request email
+    console.log('About to create email service...')
     const emailService = createEmailService()
+    console.log('Email service created, about to send email...')
 
     // Send email with timeout protection
     await withTimeout(
@@ -45,12 +56,14 @@ export async function POST(request: NextRequest) {
       10000, // 10 second timeout
       'Email sending timed out'
     )
+    console.log('Email sent successfully!')
 
     return NextResponse.json({
       success: true,
       message: 'Demo request submitted successfully',
     })
   } catch (error) {
+    console.error('=== Demo Request API Error ===')
     console.error('Error processing demo request:', error)
 
     // Enhanced error logging for debugging
@@ -63,6 +76,7 @@ export async function POST(request: NextRequest) {
     }
 
     const errorResponse = formatErrorResponse(error)
+    console.error('Formatted error response:', errorResponse)
     return NextResponse.json(
       {
         error: errorResponse.error,

@@ -16,18 +16,22 @@ export class EmailService {
 
   constructor(apiKey: string) {
     this.resend = new Resend(apiKey)
+    console.log('Resend client created')
   }
 
   /**
    * Send demo request notification email
    */
   async sendDemoRequestEmail(data: DemoRequestEmailData): Promise<void> {
+    console.log('=== Email Service: Starting to send email ===')
     // Sanitize inputs for HTML content
     const safeCompanyName = escapeHtml(data.companyName.trim())
     const safeEmail = escapeHtml(data.email.trim())
     const safePricingTier = escapeHtml(data.pricingTier.trim())
+    console.log('Input sanitization completed')
 
     try {
+      console.log('About to call Resend API...')
       const { error } = await this.resend.emails.send({
         from: 'Demo Requests <noreply@email.thewatchdog.no>',
         to: ['demo@supersolve.ai'],
@@ -38,17 +42,30 @@ export class EmailService {
           safePricingTier
         ),
       })
+      console.log('Resend API call completed, checking for errors...')
 
       if (error) {
-        console.error('Resend API error:', error)
+        console.error('Resend API returned error:', error)
         throw new ExternalServiceError('Resend', 'Failed to send email')
       }
+      console.log('Email sent successfully via Resend!')
     } catch (error) {
+      console.error('=== Email Service Error ===')
+      console.error('Error in sendDemoRequestEmail:', error)
+
       if (error instanceof ExternalServiceError) {
+        console.error('Re-throwing ExternalServiceError')
         throw error
       }
 
       console.error('Unexpected error sending email:', error)
+      if (error instanceof Error) {
+        console.error('Error details:', {
+          name: error.name,
+          message: error.message,
+          stack: error.stack,
+        })
+      }
       throw new ExternalServiceError(
         'Resend',
         'Unexpected error occurred while sending email'
@@ -91,6 +108,7 @@ export class EmailService {
  * Factory function to create email service instance
  */
 export function createEmailService(): EmailService {
+  console.log('Creating email service...')
   const apiKey = process.env.RESEND_API_KEY
 
   if (!apiKey) {
