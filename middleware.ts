@@ -39,8 +39,10 @@ export function middleware(request: NextRequest) {
     const allowedOrigins =
       process.env.NODE_ENV === 'production'
         ? [
-            'https://thewatchdog.no', // Replace with your actual domain
+            'https://thewatchdog.no', 
             'https://www.thewatchdog.no',
+            'https://supersolve.ai',
+            'https://www.supersolve.ai',
           ]
         : ['http://localhost:3000', 'http://127.0.0.1:3000']
 

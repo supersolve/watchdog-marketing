@@ -210,7 +210,7 @@ export function DemoRequestModal({
                     console.log('Consent checkbox changed:', e.target.checked)
                     setPrivacyConsent(e.target.checked)
                   }}
-                  className="mt-0.5 h-4 w-4 text-accent border-stone-300 rounded focus:ring-accent"
+                  className="mt-0.5 h-4 w-4 border-stone-300 rounded focus:ring-accent"
                 />
                 <label
                   htmlFor="privacyConsent"
