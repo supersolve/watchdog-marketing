@@ -23,11 +23,13 @@ export async function POST(request: NextRequest) {
 
     // Parse and validate request body
     const body = await request.json()
-    const { companyName, email, pricingTier } = body as DemoRequestData
+    const { companyName, email, pricingTier, buttonSource } =
+      body as DemoRequestData
     console.log('Request data:', {
       companyName,
       email,
       pricingTier: pricingTier || 'none',
+      buttonSource: buttonSource || 'unknown',
     })
 
     // Validate input data
@@ -35,6 +37,7 @@ export async function POST(request: NextRequest) {
       companyName,
       email,
       pricingTier: pricingTier || '',
+      buttonSource: buttonSource || 'unknown',
     })
     if (!validation.isValid) {
       throw new ValidationError('Validation failed', validation.errors)
@@ -52,6 +55,7 @@ export async function POST(request: NextRequest) {
         companyName: companyName.trim(),
         email: email.trim(),
         pricingTier: pricingTier?.trim() || '',
+        buttonSource: buttonSource?.trim() || 'unknown',
       }),
       10000, // 10 second timeout
       'Email sending timed out'

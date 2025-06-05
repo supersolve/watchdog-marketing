@@ -6,6 +6,7 @@ export interface DemoRequestEmailData {
   companyName: string
   email: string
   pricingTier: string
+  buttonSource?: string
 }
 
 /**
@@ -28,6 +29,7 @@ export class EmailService {
     const safeCompanyName = escapeHtml(data.companyName.trim())
     const safeEmail = escapeHtml(data.email.trim())
     const safePricingTier = escapeHtml(data.pricingTier.trim())
+    const safeButtonSource = escapeHtml((data.buttonSource || 'unknown').trim())
     console.log('Input sanitization completed')
 
     try {
@@ -39,7 +41,8 @@ export class EmailService {
         html: this.generateDemoRequestEmailTemplate(
           safeCompanyName,
           safeEmail,
-          safePricingTier
+          safePricingTier,
+          safeButtonSource
         ),
       })
       console.log('Resend API call completed, checking for errors...')
@@ -79,7 +82,8 @@ export class EmailService {
   private generateDemoRequestEmailTemplate(
     companyName: string,
     email: string,
-    pricingTier: string
+    pricingTier: string,
+    buttonSource: string
   ): string {
     // Create custom message based on pricing tier
     let pricingMessage = 'Please follow up with this demo request promptly.'
@@ -94,6 +98,7 @@ export class EmailService {
           <p><strong>Company Name:</strong> ${companyName}</p>
           <p><strong>Email:</strong> ${email}</p>
           ${pricingTier ? `<p><strong>Interested Plan:</strong> ${pricingTier}</p>` : ''}
+          <p><strong>Button Source:</strong> ${buttonSource}</p>
           <p><strong>Submitted:</strong> ${new Date().toLocaleString()}</p>
         </div>
         <p style="color: #666; font-size: 14px;">

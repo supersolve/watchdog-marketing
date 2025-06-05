@@ -148,7 +148,11 @@ export function Header() {
       </header>
 
       {/* Demo Request Modal */}
-      <DemoRequestModal isOpen={isDemoModalOpen} onClose={closeDemoModal} />
+      <DemoRequestModal
+        isOpen={isDemoModalOpen}
+        onClose={closeDemoModal}
+        buttonSource="header"
+      />
     </>
   )
 }

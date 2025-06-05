@@ -85,6 +85,7 @@ export function Footer() {
       <DemoRequestModal
         isOpen={isDemoModalOpen}
         onClose={() => setIsDemoModalOpen(false)}
+        buttonSource="footer"
       />
     </footer>
   )
