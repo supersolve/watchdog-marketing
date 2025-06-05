@@ -161,6 +161,9 @@ export function PricingSection() {
         isOpen={isDemoModalOpen}
         onClose={handleCloseModal}
         pricingTier={selectedTier}
+        buttonSource={
+          selectedTier ? `plan: ${selectedTier.toLowerCase()}` : 'pricing'
+        }
       />
     </>
   )

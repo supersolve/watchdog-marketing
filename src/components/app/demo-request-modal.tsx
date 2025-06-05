@@ -10,6 +10,7 @@ interface DemoRequestModalProps {
   isOpen: boolean
   onClose: () => void
   pricingTier?: string
+  buttonSource?: string
 }
 
 // Wrapper function to match form hook interface
@@ -22,6 +23,7 @@ export function DemoRequestModal({
   isOpen,
   onClose,
   pricingTier,
+  buttonSource,
 }: DemoRequestModalProps) {
   const [privacyConsent, setPrivacyConsent] = useState(false)
 
@@ -30,6 +32,7 @@ export function DemoRequestModal({
       companyName: '',
       email: '',
       pricingTier: pricingTier || '',
+      buttonSource: buttonSource || 'unknown',
     },
     validate: validateForm,
     onSubmit: async (values) => {
@@ -45,7 +48,10 @@ export function DemoRequestModal({
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify(values),
+          body: JSON.stringify({
+            ...values,
+            buttonSource: buttonSource || 'unknown',
+          }),
         })
 
         const result = await response.json()

@@ -66,6 +66,7 @@ export interface DemoRequestData {
   companyName: string
   email: string
   pricingTier: string
+  buttonSource: string
 }
 
 export function validateDemoRequest(data: DemoRequestData): {

@@ -81,6 +81,7 @@ export function HeroSection() {
       <DemoRequestModal
         isOpen={isDemoModalOpen}
         onClose={() => setIsDemoModalOpen(false)}
+        buttonSource="hero"
       />
     </>
   )
