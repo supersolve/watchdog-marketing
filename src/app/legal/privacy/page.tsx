@@ -286,13 +286,10 @@ export default function PrivacyPage() {
             </p>
             <div className="bg-stone-50 p-6 rounded-lg">
               <p className="text-stone-600 mb-2">
-                <strong>Email:</strong> privacy@watchdog.com
+                <strong>Email:</strong> contact@supersolve.ai
               </p>
               <p className="text-stone-600 mb-2">
-                <strong>Address:</strong> Parkveien 12, 0164 Oslo, Norway
-              </p>
-              <p className="text-stone-600">
-                <strong>Phone:</strong> +47 900 00 000
+                <strong>Address:</strong> Parkveien 12, 0350 Oslo, Norway
               </p>
             </div>
           </section>

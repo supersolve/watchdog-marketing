@@ -4,6 +4,8 @@ import { Header } from '@/components/app/header'
 import './globals.css'
 import { Footer } from '@/components/app/footer'
 import { logEnvironmentStatus } from '@/lib/environment-check'
+import { CookieConsent } from '@/components/app/cookie-consent'
+import { GoogleAnalytics } from '@/components/app/google-analytics'
 
 const manrope = Manrope({ subsets: ['latin'], variable: '--font-manrope' })
 const playfair = Playfair_Display({
@@ -37,6 +39,8 @@ export default function RootLayout({
         <Header />
         <div className="container mx-auto px-0">{children}</div>
         <Footer />
+        <CookieConsent />
+        <GoogleAnalytics />
       </body>
     </html>
   )
