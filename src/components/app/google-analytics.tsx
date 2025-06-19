@@ -42,7 +42,15 @@ export function GoogleAnalytics() {
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', 'G-X51RDDG53K');
+          
+          // Enable debug mode for localhost
+          gtag('config', 'G-X51RDDG53K', {
+            debug_mode: ${process.env.NODE_ENV === 'development'},
+            send_page_view: true
+          });
+          
+          // Log for debugging
+          console.log('Google Analytics initialized:', 'G-X51RDDG53K');
         `}
       </Script>
     </>
