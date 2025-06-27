@@ -42,7 +42,7 @@ export function HeroSection() {
 
                 <p className="mt-4 sm:mt-6 text-base sm:text-lg lg:text-lg xl:text-2xl leading-7 sm:leading-8 text-stone-600">
                   <span className="font-bold">
-                    You're probably losing millions from invoicing errors.
+                    You&apos;re probably losing millions from invoicing errors.
                   </span>{' '}
                   Find out and fix them with Watchdog.
                 </p>
