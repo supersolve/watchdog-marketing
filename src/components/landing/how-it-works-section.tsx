@@ -9,27 +9,28 @@ import { SectionTitle } from '../ui/section-title'
 const steps = [
   {
     number: 1,
-    title: 'Connect Your Data',
-    description: 'Connect your accounting software or upload directly',
+    title: 'Scan every invoice',
+    description: 'Watchdog scans both historical and new invoices',
     details:
-      'Connect Watchdog to your accounting software or upload your invoices and agreements directly.  Our API integration ensures your data stays protected.',
-    image: '/webapp-upload.png',
+      'Watchdog scans both historical and new invoices. Just set a start date, then connect them via your accounting software or upload them directly.',
+    image: '/step1.png',
   },
   {
     number: 2,
-    title: 'Let Watchdog Work',
-    description: 'Let Watchdog scan archived and incoming supplier invoices',
+    title: 'Receive alerts',
+    description: 'Watchdog alerts you when it detects an issue',
     details:
-      'Let Watchdog continually monitor your supplier invoices and agreements for errors, such as price jumps or missing discounts.',
-    image: '/webapp-invoices.png',
+      'Watchdog alerts you when it detects an issue, collects the relevant docs, and allows you to validate the issue in seconds.',
+    image: '/step2.png',
   },
   {
     number: 3,
-    title: 'Get Instant Alerts',
-    description: 'Get alerts when Watchdog detects an issue',
+    title: 'Get your money back',
+    description:
+      'Watchdog summarizes the errors and drafts a follow-up email to the supplier',
     details:
-      'Get alerts when Watchdog detects an issue and receive recommendations on how to resolve it.',
-    image: '/webapp-alerts.png',
+      'Watchdog summarizes the errors and drafts a follow-up email to the supplier - making it easy for them to validate the error and refund you.',
+    image: '/step3.png',
   },
 ]
 
@@ -54,14 +55,14 @@ export function HowItWorksSection() {
         <div className="mx-auto mt-16 max-w-6xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Single Image - Desktop Only */}
-            <div className="hidden lg:flex justify-start order-2 lg:order-1">
+            <div className="hidden lg:flex justify-center items-center order-2 lg:order-1">
               <div className="relative w-full max-w-lg">
                 <Image
                   src={currentStep.image}
                   alt={`${currentStep.title} illustration`}
                   width={500}
                   height={400}
-                  className="w-full h-auto rounded-lg shadow-lg"
+                  className="w-full h-auto rounded-lg"
                 />
               </div>
             </div>
@@ -75,19 +76,19 @@ export function HowItWorksSection() {
                     className={cn(
                       'rounded-lg border transition-all duration-200',
                       expandedStep === step.number
-                        ? 'border-accent bg-stone-200 shadow-sm'
+                        ? 'border-accent bg-stone-50 lg:bg-stone-200 shadow-sm'
                         : 'border-stone-200 bg-white hover:border-stone-300'
                     )}
                   >
                     <button
                       onClick={() => toggleStep(step.number)}
-                      className="w-full p-6 text-left focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 rounded-lg"
+                      className="w-full p-6 text-left focus:outline-none rounded-lg"
                     >
                       <div className="flex items-start justify-between">
                         <div className="flex items-start space-x-4">
                           <div
                             className={cn(
-                              'flex h-10 w-10 items-center justify-center rounded-full text-base font-semibold mt-1',
+                              'flex h-10 w-10 items-center justify-center rounded-full text-base font-semibold flex-shrink-0 mt-0.5',
                               expandedStep === step.number
                                 ? 'bg-accent text-white'
                                 : 'bg-stone-100 text-stone-600'
@@ -95,12 +96,12 @@ export function HowItWorksSection() {
                           >
                             {step.number}
                           </div>
-                          <div className="flex-1">
+                          <div className="flex-1 min-w-0">
                             <h3 className="text-xl font-semibold text-stone-900 mb-2">
                               {step.title}
                             </h3>
                             {expandedStep !== step.number && (
-                              <p className="text-base text-stone-600 mt-2 leading-relaxed">
+                              <p className="text-base text-stone-600 leading-relaxed">
                                 {step.description}
                               </p>
                             )}
@@ -108,7 +109,7 @@ export function HowItWorksSection() {
                         </div>
                         <ChevronDownIcon
                           className={cn(
-                            'h-6 w-6 text-stone-400 transition-transform duration-200 flex-shrink-0 mt-1',
+                            'h-6 w-6 text-stone-400 transition-transform duration-200 flex-shrink-0 mt-0.5',
                             expandedStep === step.number ? 'rotate-180' : ''
                           )}
                         />
@@ -126,7 +127,7 @@ export function HowItWorksSection() {
                               alt={`${step.title} illustration`}
                               width={400}
                               height={300}
-                              className="w-full h-auto rounded-lg shadow-md"
+                              className="w-full h-auto rounded-lg"
                             />
                           </div>
                         </div>
