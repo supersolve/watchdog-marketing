@@ -29,7 +29,7 @@ export function HeroSection() {
                   <div className="flex-shrink-0 lg:hidden">
                     <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full overflow-hidden bg-stone-100 flex items-center justify-center">
                       <Image
-                        src="/watchdog0.svg"
+                        src="/watchdog.svg"
                         alt="Financial Watchdog"
                         width={112}
                         height={112}
@@ -44,7 +44,9 @@ export function HeroSection() {
                   <span className="font-bold">
                     You&apos;re probably losing millions from invoicing errors.
                   </span>{' '}
-                  Find out and fix them with Watchdog.
+                  <span className="sm:block">
+                    Find out and fix them with Watchdog.
+                  </span>
                 </p>
                 <div className="mt-8 sm:mt-10 flex items-center gap-x-4 sm:gap-x-6 justify-center sm:justify-start">
                   <Button
@@ -63,7 +65,7 @@ export function HeroSection() {
             {/* Large Image for desktop */}
             <div className="hidden lg:flex justify-center items-center lg:col-span-2 min-h-[400px]">
               <Image
-                src="/watchdog0.svg"
+                src="/watchdog.svg"
                 alt="Financial Watchdog Dashboard Preview"
                 width={350}
                 height={350}
