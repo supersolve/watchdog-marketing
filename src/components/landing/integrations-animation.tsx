@@ -85,15 +85,14 @@ export const IntegrationsAnimation = () => {
         <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-center">
           <div className="lg:pr-8">
             <h3 className="text-xl font-md tracking-tight text-stone-900 sm:text-3xl">
-              No need to replace
+              No replacements needed
             </h3>
             <p className="mt-4 text-lg leading-8 text-stone-600">
-              Watchdog requires is simply connected to your existing accounting
-              and ERP systems.
+              Watchdog can easily be connected to your existing accounting and ERP systems - no replacements needed.
             </p>
             <p className="mt-4 text-lg leading-8 text-stone-600">
-              Get started by uploading agreements and invoices directly, or let
-              us help you connect Watchdog to what you already use.
+              Get started by either uploading agreements and invoices directly,  or  
+              let us help you connect Watchdog to your current system.
             </p>
           </div>
           <div className="flex items-center justify-center">

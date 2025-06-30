@@ -45,7 +45,7 @@ export function HeroSection() {
                     You&apos;re probably losing millions from invoicing errors.
                   </span>{' '}
                   <span className="sm:block">
-                    Find out and fix them with Watchdog.
+                    Find and fix them with Watchdog.
                   </span>
                 </p>
                 <div className="mt-8 sm:mt-10 flex items-center gap-x-4 sm:gap-x-6 justify-center sm:justify-start">
