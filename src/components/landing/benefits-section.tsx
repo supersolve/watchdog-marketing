@@ -1,23 +1,23 @@
-import { TrendingDownIcon, SearchIcon, ClockIcon } from 'lucide-react'
+import { TrendingUpIcon, SearchIcon, ClockIcon } from 'lucide-react'
 
 const benefits = [
   {
-    icon: SearchIcon,
-    title: 'To track every order line',
+    icon: TrendingUpIcon,
+    title: 'To boost profits',
     description:
-      'Track changes across hundreds of thousands of order lines from suppliers in real-time.',
+      'Cut costly invoice errors and ensure negotiated terms with suppliers are met.',
   },
   {
-    icon: TrendingDownIcon,
-    title: 'To save costs',
+    icon: SearchIcon,
+    title: 'To stay in control',
     description:
-      'Identify costly invoice errors and ensure your negotiated terms with suppliers are met.',
+      'Scan every order line from suppliers for important changes.',
   },
   {
     icon: ClockIcon,
     title: 'To save time',
     description:
-      'Stop spending hours on sparse, ad hoc errors checks, and focus on running your business.',
+      'Check for errors in minutes, not hours, and prioritize errors that matter.',
   },
 ]
 
