@@ -132,6 +132,14 @@
 :root {
   --radius: 0.625rem;
 
+  /* Animation variables */
+  --orbit-duration: 60s;
+  --orbit-size: 440px;
+  --orbit-size-mobile: 320px;
+  --icon-container-size: 90px;
+  --icon-image-size: 60px;
+  --center-logo-size: 150px;
+
   /* Stone colors - primary grays */
   --stone-50: #fafaf9;
   --stone-100: #f5f5f4;
@@ -258,6 +266,15 @@
   --sidebar-accent-foreground: var(--stone-800);
   --sidebar-border: var(--beige-200);
   --sidebar-ring: var(--stone-500);
+}
+
+@media (max-width: 768px) {
+  :root {
+    /* Animation variables for mobile */
+    --icon-container-size: 60px;
+    --icon-image-size: 32px;
+    --center-logo-size: 100px;
+  }
 }
 
 .dark {

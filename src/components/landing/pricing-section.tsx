@@ -41,7 +41,7 @@ const pricingTiers = [
 export function PricingSection() {
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false)
   const [selectedTier, setSelectedTier] = useState<string>('')
-  const [activeMobileTier, setActiveMobileTier] = useState(0) // Default to first tier (Free)
+  const [activeMobileTier, setActiveMobileTier] = useState(1) // Default to second tier (Pro)
 
   const handleRequestDemo = (tierName: string) => {
     setSelectedTier(tierName)

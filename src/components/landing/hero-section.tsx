@@ -13,15 +13,15 @@ export function HeroSection() {
     <>
       <section className="py-12 sm:py-16 lg:py-24 xl:py-32">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-12 sm:gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-center lg:gap-y-20">
+          <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-12 sm:gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-5 lg:items-center lg:gap-y-20">
             {/* Text Content */}
-            <div className="lg:pr-8 lg:pt-4">
-              <div className="lg:max-w-lg">
+            <div className="lg:pr-8 lg:pt-4 lg:col-span-3 flex flex-col justify-center">
+              <div className="max-w-lg lg:max-w-2xl">
                 {/* Heading with circular image on mobile */}
                 <div className="flex items-center gap-4 lg:block">
                   <div className="flex-1">
-                    <h1 className="text-4xl sm:text-5xl lg:text-5xl xl:text-6xl tracking-tight leading-tight">
-                      Get your{' '}
+                    <h1 className="text-3xl sm:text-5xl lg:text-6xl tracking-tight leading-tight">
+                      Get a{' '}
                       <span className="font-serif">Financial Watchdog</span>
                     </h1>
                   </div>
@@ -29,7 +29,7 @@ export function HeroSection() {
                   <div className="flex-shrink-0 lg:hidden">
                     <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full overflow-hidden bg-stone-100 flex items-center justify-center">
                       <Image
-                        src="/watchdog0.svg"
+                        src="/watchdog.svg"
                         alt="Financial Watchdog"
                         width={112}
                         height={112}
@@ -40,20 +40,20 @@ export function HeroSection() {
                   </div>
                 </div>
 
-                <p className="mt-4 sm:mt-6 text-base sm:text-lg lg:text-lg xl:text-xl leading-7 sm:leading-8 text-stone-600">
-                  <span className="text-stone-900 font-bold">
-                    Never overpay again.
+                <p className="mt-4 sm:mt-6 text-base sm:text-lg lg:text-lg xl:text-2xl leading-7 sm:leading-8 text-stone-600">
+                  <span className="font-bold">
+                    You&apos;re probably losing millions from invoicing errors.
                   </span>{' '}
-                  Watchdog automatically scans your invoices, compares them to
-                  your agreements, and alerts you of errors before they hurt
-                  your bottom line.
+                  <span className="sm:block">
+                    Find and fix them with Watchdog.
+                  </span>
                 </p>
-                <div className="mt-8 sm:mt-10 flex items-center gap-x-4 sm:gap-x-6">
+                <div className="mt-8 sm:mt-10 flex items-center gap-x-4 sm:gap-x-6 justify-center sm:justify-start">
                   <Button
                     variant="accent"
                     size="lg"
                     onClick={() => setIsDemoModalOpen(true)}
-                    className="w-full sm:w-auto"
+                    className="w-auto max-w-xs px-8"
                   >
                     Request Demo
                     <ArrowRightIcon className="w-4 h-4" />
@@ -63,13 +63,13 @@ export function HeroSection() {
             </div>
 
             {/* Large Image for desktop */}
-            <div className="hidden lg:flex justify-center lg:justify-end">
+            <div className="hidden lg:flex justify-center items-center lg:col-span-2 min-h-[400px]">
               <Image
-                src="/watchdog0.svg"
+                src="/watchdog.svg"
                 alt="Financial Watchdog Dashboard Preview"
-                width={400}
-                height={400}
-                className="w-full max-w-sm sm:max-w-md lg:max-w-lg h-auto rounded-md"
+                width={350}
+                height={350}
+                className="w-full max-w-xs h-auto"
                 priority
               />
             </div>

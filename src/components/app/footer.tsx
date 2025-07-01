@@ -16,9 +16,9 @@ export function Footer() {
           <div>
             <h2 className="text-2xl font-serif font-semibold mb-4">Watchdog</h2>
             <p className="text-muted-foreground text-sm leading-relaxed mb-6 max-w-md">
-              Never overpay again. Watchdog automatically scans your invoices,
-              compares them to your agreements, and alerts you of discrepancies
-              before they impact your bottom line.
+              Watchdog automatically scans your invoices, compares them to your
+              agreements, and alerts you of discrepancies before they impact
+              your bottom line.
             </p>
             <div className="flex space-x-4">
               <Button

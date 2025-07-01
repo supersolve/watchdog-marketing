@@ -1,21 +1,19 @@
 import {
+  AboutSection,
+  HowItWorksSection,
+  PricingSection,
   HeroSection,
   BenefitsSection,
-  HowItWorksSection,
-  // TestimonialsSection,
-  IntegrationsSection,
-  PricingSection,
-  AboutSection,
 } from '@/components/landing'
+import { IntegrationsAnimation } from '@/components/landing/integrations'
 
 export default function Home() {
   return (
-    <main>
+    <main className="isolate">
       <HeroSection />
       <BenefitsSection />
       <HowItWorksSection />
-      {/* <TestimonialsSection /> */}
-      <IntegrationsSection />
+      <IntegrationsAnimation />
       <PricingSection />
       <AboutSection />
     </main>
