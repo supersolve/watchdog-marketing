@@ -150,4 +150,4 @@ export const IntegrationsAnimation = () => {
       </div>
     </section>
   )
-} 
+}
