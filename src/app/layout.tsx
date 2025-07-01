@@ -22,8 +22,8 @@ export const metadata: Metadata = {
   title: 'Watchdog',
   description: 'Stop overcharging.',
   icons: {
-    icon: '/logo-watchdog-background.svg'
-  }
+    icon: '/logo-watchdog-background.svg',
+  },
 }
 
 export default function RootLayout({
