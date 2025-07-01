@@ -45,10 +45,10 @@ export function AboutSection() {
 
             <div className="space-y-4 text-lg text-stone-600">
               <p>
-                Businesses lose millions of NOK every year due to invoicing
-                errors. Previously, financial teams had to either spend long
-                hours manually analyzing order lines, or blindly trust invoices
-                from their suppliers.
+                Businesses lose millions every year due to invoicing errors.
+                Previously, financial teams had to either spend long hours
+                manually analyzing order lines, or blindly trust invoices from
+                their suppliers.
               </p>
 
               <p>
@@ -63,8 +63,8 @@ export function AboutSection() {
                 Team Experience
               </h3>
               <p className="mt-4 mb-10 text-lg text-stone-600">
-                Our team consists of serial founders and consultants from BCG
-                and BEKK.
+                Our team consists of experienced serial founders and consultants
+                from BCG and BEKK.
               </p>
               <div className="grid grid-cols-2 gap-16">
                 {previousExperience.map((company) => (

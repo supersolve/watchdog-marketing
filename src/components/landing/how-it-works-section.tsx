@@ -9,7 +9,7 @@ import { SectionTitle } from '../ui/section-title'
 const steps = [
   {
     number: 1,
-    title: 'Scan every invoice',
+    title: 'Scan every invoice and agreement',
     description: 'Watchdog scans both historical and new invoices',
     details:
       'Watchdog scans both historical and new invoices. Just set a start date, then connect them via your accounting software or upload them directly.',
@@ -36,13 +36,16 @@ const steps = [
 
 export function HowItWorksSection() {
   const [expandedStep, setExpandedStep] = useState<number | null>(null)
+  const [currentImageStep, setCurrentImageStep] = useState<number>(1)
 
   const toggleStep = (stepNumber: number) => {
-    setExpandedStep(expandedStep === stepNumber ? null : stepNumber)
+    // Always expand the clicked step (no collapsing)
+    setExpandedStep(stepNumber)
+    setCurrentImageStep(stepNumber)
   }
 
   const currentStep =
-    steps.find((step) => step.number === expandedStep) || steps[0]
+    steps.find((step) => step.number === currentImageStep) || steps[0]
 
   return (
     <section className="py-16 sm:py-24 lg:py-32 bg-stone-50">
@@ -55,20 +58,20 @@ export function HowItWorksSection() {
         <div className="mx-auto mt-16 max-w-6xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Single Image - Desktop Only */}
-            <div className="hidden lg:flex justify-center items-center order-2 lg:order-1">
+            <div className="hidden lg:flex justify-center items-center order-2 lg:order-1 min-h-[500px]">
               <div className="relative w-full max-w-lg">
                 <Image
                   src={currentStep.image}
                   alt={`${currentStep.title} illustration`}
                   width={500}
                   height={400}
-                  className="w-full h-auto rounded-lg"
+                  className="w-full h-auto rounded-lg object-contain"
                 />
               </div>
             </div>
 
             {/* Steps List */}
-            <div className="order-1 lg:order-2">
+            <div className="order-1 lg:order-2 min-h-[510px]">
               <div className="space-y-6">
                 {steps.map((step) => (
                   <div
