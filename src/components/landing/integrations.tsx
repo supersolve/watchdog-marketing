@@ -10,13 +10,21 @@ import { SectionTitle } from '../ui/section-title'
 const ICON_DATA = [
   { src: '/logo-tripletex.png', name: 'Tripletex' },
   { src: '/logo-poweroffice.png', name: 'PowerOffice' },
-  { src: '/logo-visma-nxt.svg', name: 'Visma Nxt' },
+  { src: '/logo-visma-nxt.svg', name: 'Visma Business NXT' },
   { src: '/logo-MS-BC.svg', name: 'Microsoft Business Central' },
-  { src: '/logo-24seven.svg', name: '24SevenOffice' },
+  { src: '/logo-24Seven.svg', name: '24SevenOffice' },
   { src: '/logo-fiken.svg', name: 'Fiken' },
 ]
 
-const ICON_CONTAINER_SIZE = 88 // Increased for better visual presence
+// --- HELPERS ---
+
+const getIconContainerSize = () => {
+  if (typeof window === 'undefined') return 90 // SSR fallback
+
+  const style = getComputedStyle(document.documentElement)
+  const size = style.getPropertyValue('--icon-container-size').trim()
+  return parseInt(size) || 90
+}
 
 // --- TYPES ---
 
@@ -44,11 +52,12 @@ export const IntegrationsAnimation = () => {
 
     const orbitWidth = orbitRef.current.offsetWidth
     const radius = orbitWidth / 2
+    const iconContainerSize = getIconContainerSize()
 
     const newPositions = ICON_DATA.map((icon, index) => {
       const angle = (index / ICON_DATA.length) * 2 * Math.PI
-      const x = radius * Math.cos(angle) + radius - ICON_CONTAINER_SIZE / 2
-      const y = radius * Math.sin(angle) + radius - ICON_CONTAINER_SIZE / 2
+      const x = radius * Math.cos(angle) + radius - iconContainerSize / 2
+      const y = radius * Math.sin(angle) + radius - iconContainerSize / 2
 
       return {
         ...icon,

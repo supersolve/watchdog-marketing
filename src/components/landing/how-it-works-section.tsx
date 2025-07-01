@@ -48,7 +48,7 @@ export function HowItWorksSection() {
     steps.find((step) => step.number === currentImageStep) || steps[0]
 
   return (
-    <section className="py-16 sm:py-24 lg:py-32 bg-stone-50">
+    <section className="py-16 sm:py-24 lg:py-32 bg-beige-50">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <SectionTitle
           title="How Watchdog works"
