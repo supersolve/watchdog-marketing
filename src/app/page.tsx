@@ -5,7 +5,7 @@ import {
   HeroSection,
   BenefitsSection,
 } from '@/components/landing'
-import { IntegrationsAnimation } from '@/components/landing/integrations-animation'
+import { IntegrationsAnimation } from '@/components/landing/integrations'
 
 export default function Home() {
   return (

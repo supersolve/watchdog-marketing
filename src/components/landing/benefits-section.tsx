@@ -10,8 +10,7 @@ const benefits = [
   {
     icon: SearchIcon,
     title: 'To stay in control',
-    description:
-      'Scan every order line from suppliers for important changes.',
+    description: 'Scan every order line from suppliers for important changes.',
   },
   {
     icon: ClockIcon,

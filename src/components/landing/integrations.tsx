@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef, useCallback } from 'react'
 import Image from 'next/image'
-import styles from './integrations-animation.module.css'
+import styles from './integrations.module.css'
 import { SectionTitle } from '../ui/section-title'
 
 // --- CONSTANTS ---
@@ -10,10 +10,10 @@ import { SectionTitle } from '../ui/section-title'
 const ICON_DATA = [
   { src: '/logo-tripletex.png', name: 'Tripletex' },
   { src: '/logo-poweroffice.png', name: 'PowerOffice' },
+  { src: '/logo-visma-nxt.svg', name: 'Visma Nxt' },
+  { src: '/logo-MS-BC.svg', name: 'Microsoft Business Central' },
+  { src: '/logo-24seven.svg', name: '24SevenOffice' },
   { src: '/logo-fiken.svg', name: 'Fiken' },
-  { src: '/logo-intuit.svg', name: 'QuickBooks' },
-  { src: '/logo-cognite.png', name: 'Cognite' },
-  { src: '/logo-openAI.svg', name: 'OpenAI' },
 ]
 
 const ICON_CONTAINER_SIZE = 88 // Increased for better visual presence
@@ -127,17 +127,19 @@ export const IntegrationsAnimation = () => {
                     key={index}
                     className={styles.integrationIcon}
                     style={icon.style}
-                    title={icon.name}
                   >
-                    <div className={styles.iconContainer}>
-                      <Image
-                        src={icon.src}
-                        alt={`${icon.name} Logo`}
-                        width={60}
-                        height={60}
-                        className={styles.iconImage}
-                        onError={handleImageError}
-                      />
+                    <div className={styles.tooltipContainer}>
+                      <div className={styles.tooltip}>{icon.name}</div>
+                      <div className={styles.iconContainer}>
+                        <Image
+                          src={icon.src}
+                          alt={`${icon.name} Logo`}
+                          width={60}
+                          height={60}
+                          className={styles.iconImage}
+                          onError={handleImageError}
+                        />
+                      </div>
                     </div>
                   </div>
                 ))}
@@ -148,4 +150,4 @@ export const IntegrationsAnimation = () => {
       </div>
     </section>
   )
-}
+} 

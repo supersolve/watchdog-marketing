@@ -53,8 +53,7 @@ export function AboutSection() {
 
               <p>
                 Now, we are building Watchdog to allow CFOs, controllers, and
-                procurers to monitor every order line and cut time on analysis
-                from hours to seconds.
+                procurers to identify and resolve every error in minutes.
               </p>
             </div>
 
