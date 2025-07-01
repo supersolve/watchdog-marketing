@@ -16,9 +16,7 @@ export function AboutSection() {
   return (
     <section className="py-16 sm:py-24 lg:py-32 bg-gradient-to-b from-stone-50 to-white">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <SectionTitle
-          title="About Us"
-        />
+        <SectionTitle title="About Us" />
 
         {/* Hero Section */}
         <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-16 gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-start">
@@ -47,13 +45,16 @@ export function AboutSection() {
 
             <div className="space-y-4 text-lg text-stone-600">
               <p>
-                Businesses lose millions of NOK every year due to invoicing errors.
-                Previously, financial teams had to either spend long hours manually analyzing order lines, or blindly trust invoices from their suppliers.
+                Businesses lose millions of NOK every year due to invoicing
+                errors. Previously, financial teams had to either spend long
+                hours manually analyzing order lines, or blindly trust invoices
+                from their suppliers.
               </p>
 
               <p>
-              Now, we are building Watchdog to allow CFOs, controllers, and procurers to monitor every order line and 
-              cut time on analysis from hours to seconds.
+                Now, we are building Watchdog to allow CFOs, controllers, and
+                procurers to monitor every order line and cut time on analysis
+                from hours to seconds.
               </p>
             </div>
 
@@ -63,7 +64,8 @@ export function AboutSection() {
                 Team Experience
               </h3>
               <p className="mt-4 mb-10 text-lg text-stone-600">
-                Our team consists of serial founders and consultants from BCG and BEKK.
+                Our team consists of serial founders and consultants from BCG
+                and BEKK.
               </p>
               <div className="grid grid-cols-2 gap-16">
                 {previousExperience.map((company) => (

@@ -88,11 +88,12 @@ export const IntegrationsAnimation = () => {
               No replacements needed
             </h3>
             <p className="mt-4 text-lg leading-8 text-stone-600">
-              Watchdog can easily be connected to your existing accounting and ERP systems - no replacements needed.
+              Watchdog can easily be connected to your existing accounting and
+              ERP systems - no replacements needed.
             </p>
             <p className="mt-4 text-lg leading-8 text-stone-600">
-              Get started by either uploading agreements and invoices directly,  or  
-              let us help you connect Watchdog to your current system.
+              Get started by either uploading agreements and invoices directly,
+              or let us help you connect Watchdog to your current system.
             </p>
           </div>
           <div className="flex items-center justify-center">
