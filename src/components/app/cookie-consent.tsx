@@ -10,16 +10,25 @@ export function CookieConsent() {
   useEffect(() => {
     // Check if user has already made a choice
     const consentChoice = localStorage.getItem('cookie-consent')
+
     if (!consentChoice) {
       // Small delay to ensure page has loaded before showing popup
       const timer = setTimeout(() => setShowConsent(true), 1000)
       return () => clearTimeout(timer)
+    } else {
+      // If consent was already given, dispatch the event again for any components that might have missed it
+      if (consentChoice === 'accepted') {
+        setTimeout(() => {
+          window.dispatchEvent(new CustomEvent('cookie-consent-accepted'))
+        }, 100)
+      }
     }
   }, [])
 
   const handleAccept = () => {
     localStorage.setItem('cookie-consent', 'accepted')
     setShowConsent(false)
+
     // Trigger Google Analytics initialization
     window.dispatchEvent(new CustomEvent('cookie-consent-accepted'))
   }

@@ -43,14 +43,22 @@ export function GoogleAnalytics() {
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
           
-          // Enable debug mode for localhost
-          gtag('config', 'G-X51RDDG53K', {
-            debug_mode: ${process.env.NODE_ENV === 'development'},
-            send_page_view: true
+          // Configure consent mode for privacy
+          gtag('consent', 'default', {
+            'analytics_storage': 'granted',
+            'ad_storage': 'denied',
+            'functionality_storage': 'granted',
+            'personalization_storage': 'denied',
+            'security_storage': 'granted'
           });
           
-          // Log for debugging
-          console.log('Google Analytics initialized:', 'G-X51RDDG53K');
+          // Configure GA4
+          gtag('config', 'G-X51RDDG53K', {
+            debug_mode: ${process.env.NODE_ENV === 'development'},
+            send_page_view: true,
+            anonymize_ip: true,
+            allow_google_signals: false
+          });
         `}
       </Script>
     </>
