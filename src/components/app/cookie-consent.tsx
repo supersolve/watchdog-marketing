@@ -57,7 +57,25 @@ export function CookieConsent() {
       <p className="text-sm text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
         We use cookies and analytics to improve your experience on our website.
         By accepting, you agree to our use of cookies for analytics and
-        marketing purposes.
+        marketing purposes. Learn more in our{' '}
+        <a
+          href="/legal/privacy"
+          className="text-blue-600 hover:text-blue-800 underline"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Privacy Policy
+        </a>{' '}
+        and{' '}
+        <a
+          href="/legal/cookies"
+          className="text-blue-600 hover:text-blue-800 underline"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Cookie Policy
+        </a>
+        .
       </p>
 
       <div className="flex gap-3">
