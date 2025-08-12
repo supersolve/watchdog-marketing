@@ -42,8 +42,6 @@ export function GoogleAnalytics() {
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          
-          // Configure consent mode for privacy
           gtag('consent', 'default', {
             'analytics_storage': 'granted',
             'ad_storage': 'denied',
@@ -51,8 +49,6 @@ export function GoogleAnalytics() {
             'personalization_storage': 'denied',
             'security_storage': 'granted'
           });
-          
-          // Configure GA4
           gtag('config', 'G-X51RDDG53K', {
             debug_mode: ${process.env.NODE_ENV === 'development'},
             send_page_view: true,

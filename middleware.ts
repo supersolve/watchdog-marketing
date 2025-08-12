@@ -15,9 +15,6 @@ export function middleware(request: NextRequest) {
   // Add security headers for all requests
   const response = NextResponse.next()
 
-  // Prevent server information disclosure
-  response.headers.set('Server', 'Watchdog')
-
   // Add additional security for API routes
   if (request.nextUrl.pathname.startsWith('/api/')) {
     // Check request size (limit to 1MB for API requests)
@@ -48,6 +45,7 @@ export function middleware(request: NextRequest) {
 
     if (origin && allowedOrigins.includes(origin)) {
       response.headers.set('Access-Control-Allow-Origin', origin)
+      response.headers.append('Vary', 'Origin')
     } else if (process.env.NODE_ENV !== 'production') {
       // Allow localhost in development
       response.headers.set('Access-Control-Allow-Origin', '*')
