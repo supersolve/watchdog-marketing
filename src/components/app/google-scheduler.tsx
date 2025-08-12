@@ -83,7 +83,7 @@ export function GoogleSchedulerButton({
                   src={url}
                   title={label}
                   className="w-full h-full"
-                  loading="eager"
+                  loading="lazy"
                   referrerPolicy="no-referrer"
                   sandbox="allow-forms allow-scripts allow-same-origin allow-popups"
                   onLoad={() => setHasLoaded(true)}

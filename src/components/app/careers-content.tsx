@@ -1,23 +1,63 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Button } from '@/components/ui/button'
-import { GoogleSchedulerButton } from '@/components/app/google-scheduler'
+import dynamic from 'next/dynamic'
 import { ChevronDown } from 'lucide-react'
+import { usePathname, useRouter } from 'next/navigation'
 
 interface CareersContentProps {
   schedulerUrl: string
+  initialLanguage?: Language
 }
 
 type Language = 'no' | 'en'
 
-export function CareersContent({ schedulerUrl }: CareersContentProps) {
-  const [language, setLanguage] = useState<Language>('no')
+const LazyGoogleSchedulerButton = dynamic(
+  () =>
+    import('@/components/app/google-scheduler').then(
+      (m) => m.GoogleSchedulerButton
+    ),
+  {
+    ssr: false,
+    loading: () => (
+      <Button variant="accent" size="lg" type="button" disabled>
+        Loading...
+      </Button>
+    ),
+  }
+)
+
+export function CareersContent({
+  schedulerUrl,
+  initialLanguage = 'en',
+}: CareersContentProps) {
+  const [language, setLanguage] = useState<Language>(initialLanguage)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const containerRef = useRef<HTMLDivElement | null>(null)
+
+  const router = useRouter()
+  const pathname = usePathname()
+
+  useEffect(() => {
+    function handleDocumentMouseDown(event: MouseEvent) {
+      if (!containerRef.current) return
+      if (!containerRef.current.contains(event.target as Node)) {
+        setIsMenuOpen(false)
+      }
+    }
+
+    if (isMenuOpen) {
+      document.addEventListener('mousedown', handleDocumentMouseDown)
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleDocumentMouseDown)
+    }
+  }, [isMenuOpen])
 
   const isNorwegian = language === 'no'
 
-  const label = isNorwegian ? 'Book et møte' : 'Book an appointment'
+  const label = isNorwegian ? 'Sett opp en rask prat' : 'Book a quick chat'
 
   return (
     <section className="relative mx-auto max-w-3xl px-6 sm:px-8 pt-24 sm:pt-32 pb-28">
@@ -36,7 +76,11 @@ export function CareersContent({ schedulerUrl }: CareersContentProps) {
               : 'We’re growing fast and looking for Norway’s most ambitious devs'}
           </h1>
 
-          <div className="relative shrink-0" aria-label="Language selector">
+          <div
+            ref={containerRef}
+            className="relative shrink-0"
+            aria-label="Language selector"
+          >
             <Button
               type="button"
               variant="outline"
@@ -69,6 +113,9 @@ export function CareersContent({ schedulerUrl }: CareersContentProps) {
                   className="w-full flex items-center gap-2 rounded-sm px-2 py-1.5 text-sm hover:bg-stone-100"
                   onClick={() => {
                     setLanguage('no')
+                    const params = new URLSearchParams(window.location.search)
+                    params.set('lang', 'no')
+                    router.replace(`${pathname}?${params.toString()}`)
                     setIsMenuOpen(false)
                   }}
                 >
@@ -80,6 +127,9 @@ export function CareersContent({ schedulerUrl }: CareersContentProps) {
                   className="w-full flex items-center gap-2 rounded-sm px-2 py-1.5 text-sm hover:bg-stone-100"
                   onClick={() => {
                     setLanguage('en')
+                    const params = new URLSearchParams(window.location.search)
+                    params.set('lang', 'en')
+                    router.replace(`${pathname}?${params.toString()}`)
                     setIsMenuOpen(false)
                   }}
                 >
@@ -100,16 +150,16 @@ export function CareersContent({ schedulerUrl }: CareersContentProps) {
             <p>Vi jakter eksepsjonelle utviklere som kan:</p>
             <ul className="list-disc pl-4 space-y-0 text-lg leading-relaxed text-stone-700">
               <li>
-                Implementere og vedlikeholde features på tvers av frontend,
-                backend og infra.
+                Bygge og vedlikeholde features på tvers av frontend, backend og
+                infra.
               </li>
               <li>
                 Ta eierskap over system fra ende-til-ende: arkitektur,
                 implementering, lansering og iterering.
               </li>
               <li>
-                Samarbeide tett med teamet om å omgjøre brukerbehov til
-                intuitive brukeropplevelser.
+                Samarbeide tett med teamet og omgjøre brukerbehov til intuitive
+                brukeropplevelser.
               </li>
               <li>Bidra til kultur- og produktutvikling.</li>
             </ul>
@@ -177,7 +227,7 @@ export function CareersContent({ schedulerUrl }: CareersContentProps) {
       </div>
 
       <div className="text-center mt-10 sm:mt-12">
-        <GoogleSchedulerButton
+        <LazyGoogleSchedulerButton
           url={schedulerUrl}
           label={label}
           color="#616161"

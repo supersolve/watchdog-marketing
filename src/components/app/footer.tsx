@@ -2,7 +2,12 @@
 
 import { useState } from 'react'
 import { Button } from '../ui/button'
-import { DemoRequestModal } from './demo-request-modal'
+import dynamic from 'next/dynamic'
+
+const DemoRequestModal = dynamic(
+  () => import('./demo-request-modal').then((m) => m.DemoRequestModal),
+  { ssr: false }
+)
 
 export function Footer() {
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false)
@@ -59,11 +64,13 @@ export function Footer() {
       </div>
 
       {/* Demo Request Modal */}
-      <DemoRequestModal
-        isOpen={isDemoModalOpen}
-        onClose={() => setIsDemoModalOpen(false)}
-        buttonSource="footer"
-      />
+      {isDemoModalOpen && (
+        <DemoRequestModal
+          isOpen={isDemoModalOpen}
+          onClose={() => setIsDemoModalOpen(false)}
+          buttonSource="footer"
+        />
+      )}
     </footer>
   )
 }
