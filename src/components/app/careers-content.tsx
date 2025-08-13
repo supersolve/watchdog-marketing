@@ -72,8 +72,8 @@ export function CareersContent({
         <header className="mb-10 sm:mb-12 flex items-start justify-between gap-2 sm:gap-3 w-full">
           <h1 className="font-serif text-3xl sm:text-3xl tracking-tight flex-1 min-w-0 pr-2">
             {isNorwegian
-              ? 'Vi vokser fort og søker Norges mest ambisiøse utviklere'
-              : 'We’re growing fast and looking for Norway’s most ambitious devs'}
+              ? 'Vi vokser raskt og søker Norges mest ambisiøse utviklere'
+              : 'We’re growing fast and are looking for Norway’s most ambitious devs'}
           </h1>
 
           <div
@@ -150,11 +150,11 @@ export function CareersContent({
             <p>Vi jakter eksepsjonelle utviklere som kan:</p>
             <ul className="list-disc pl-4 space-y-0 text-lg leading-relaxed text-stone-700">
               <li>
-                Bygge og vedlikeholde features på tvers av frontend, backend og
-                infra.
+                Bygge og vedlikeholde funksjonalitet på tvers av frontend,
+                backend og infra.
               </li>
               <li>
-                Ta eierskap over system fra ende-til-ende: arkitektur,
+                Ta eierskap til systemer fra ende-til-ende: arkitektur,
                 implementering, lansering og iterering.
               </li>
               <li>
@@ -164,17 +164,17 @@ export function CareersContent({
               <li>Bidra til kultur- og produktutvikling.</li>
             </ul>
             <p>
-              Vi er i “hustle mode”; har høyt tempo, shipper raskt og jobber
+              Vi er i “hustle mode”; vi har høyt tempo, shipper raskt og jobber
               sent for å sikre at vi vinner markedet. Vi kan tilby god lønn,
-              eierandel og gleden av å bygge noe folk faktisk elsker å bruke.
+              eierandeler og gleden av å bygge noe folk faktisk elsker å bruke.
             </p>
             <p>
               Teamet består av tidligere gründere, ex-BCG og ex-BEKK, backet av
               investorer fra bl.a. A&Co og OpenAI.
             </p>
             <p>
-              Book 10–15 minutter med meg hvis du er interessert i å høre mer.
-              Du trenger ikke CV eller søknad.
+              Book 10–15 min med meg hvis du er interessert i å høre mer. Du
+              trenger ikke CV eller søknad.
             </p>
 
             <div className="pt-4 text-base sm:text-lg italic">
@@ -186,10 +186,10 @@ export function CareersContent({
           <div className="space-y-4 text-lg leading-relaxed">
             <p>
               Watchdog is an AI product that scans company purchases for errors
-              and alerts when something’s off. We launched pilots in May and
-              have already analyzed over NOK 4 billion in purchases.
+              and alerts the company if they’re overcharged. We launched pilots
+              in May and have already analyzed over NOK 4 billion in purchases.
             </p>
-            <p>We’re after exceptional developers who can:</p>
+            <p>We’re looking for exceptional developers who can:</p>
             <ul className="list-disc pl-4 space-y-0 text-lg leading-relaxed text-stone-700">
               <li>
                 Build and maintain features across frontend, backend, and infra.
@@ -199,13 +199,12 @@ export function CareersContent({
                 iteration.
               </li>
               <li>
-                Work closely with the team to turn user needs into intuitive
-                experiences.
+                Work closely with the team to turn user needs into intuitive UX.
               </li>
               <li>Shape our culture and product direction.</li>
             </ul>
             <p>
-              We’re in hustle mode; we have a high pace, we ship fast, and work
+              We’re in hustle mode: we have a high pace, we ship fast, and work
               late to win the market. We offer a competitive salary, equity, and
               the joy of building something people truly love.
             </p>
@@ -214,7 +213,7 @@ export function CareersContent({
               investors from A&Co and OpenAI.
             </p>
             <p>
-              Book 10–15 minutes with me if you want to hear more (no CV or
+              Book 10–15 min with me if you want to hear more (no CV or
               application needed).
             </p>
 
