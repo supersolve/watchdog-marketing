@@ -13,7 +13,7 @@ const playfair = Playfair_Display({
 })
 
 export const metadata: Metadata = {
-  title: 'Watchdog - Accounting Automation Platform',
+  title: 'Watchdog - AI for procurement',
   icons: [
     {
       rel: 'icon',
