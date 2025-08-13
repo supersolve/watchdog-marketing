@@ -5,7 +5,13 @@ import Link from 'next/link'
 import { Button } from '../ui/button'
 import { useIsMobile } from '../hooks/use-mobile'
 import { cn } from '@/lib/utils'
-import { DemoRequestModal } from './demo-request-modal'
+import dynamic from 'next/dynamic'
+import { CareersPrompt } from './careers-prompt'
+
+const DemoRequestModal = dynamic(
+  () => import('./demo-request-modal').then((m) => m.DemoRequestModal),
+  { ssr: false }
+)
 
 // Burger menu icon component
 const BurgerIcon = ({ className }: { className?: string }) => (
@@ -40,6 +46,18 @@ const MobileMenu = ({
   return (
     <div className="absolute top-full left-0 right-0 bg-tertiary border-t border-border shadow-lg z-50 mx-4 sm:mx-6 lg:mx-8 rounded-b-lg">
       <div className="flex flex-col p-4 space-y-4">
+        <Link href="/careers">
+          <Button
+            variant="ghost"
+            className="justify-start w-full h-12 text-base"
+            onClick={onClose}
+          >
+            We&#39;re hiring!
+            <span aria-hidden className="ml-1">
+              →
+            </span>
+          </Button>
+        </Link>
         <a href="https://app.thewatchdog.no" rel="noopener noreferrer">
           <Button
             variant="ghost"
@@ -107,6 +125,7 @@ export function Header() {
           {/* Desktop Navigation */}
           {!isMobile && (
             <div className="flex items-center space-x-4">
+              <CareersPrompt />
               <a
                 href="https://app.thewatchdog.no/sign-in"
                 rel="noopener noreferrer"
@@ -148,11 +167,13 @@ export function Header() {
       </header>
 
       {/* Demo Request Modal */}
-      <DemoRequestModal
-        isOpen={isDemoModalOpen}
-        onClose={closeDemoModal}
-        buttonSource="header"
-      />
+      {isDemoModalOpen && (
+        <DemoRequestModal
+          isOpen={isDemoModalOpen}
+          onClose={closeDemoModal}
+          buttonSource="header"
+        />
+      )}
     </>
   )
 }

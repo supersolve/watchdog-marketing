@@ -22,13 +22,9 @@ const nextConfig: NextConfig = {
             value: 'strict-origin-when-cross-origin',
           },
           {
-            key: 'X-XSS-Protection',
-            value: '1; mode=block',
-          },
-          {
             key: 'Permissions-Policy',
             value:
-              'camera=(), microphone=(), geolocation=(), interest-cohort=()',
+              'camera=(), microphone=(), geolocation=(), interest-cohort()',
           },
           // HSTS (only in production)
           ...(process.env.NODE_ENV === 'production'
@@ -43,11 +39,13 @@ const nextConfig: NextConfig = {
             key: 'Content-Security-Policy',
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com",
-              "style-src 'self' 'unsafe-inline' fonts.googleapis.com",
+              // No 'unsafe-eval'; allow inline for GA snippet via 'unsafe-inline'
+              "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://calendar.google.com",
+              "style-src 'self' 'unsafe-inline' fonts.googleapis.com https://calendar.google.com",
               "font-src 'self' fonts.gstatic.com",
               "img-src 'self' data: blob: https:",
-              "connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com",
+              "connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://calendar.google.com",
+              'frame-src https://calendar.google.com',
               "frame-ancestors 'none'",
               "base-uri 'self'",
               "form-action 'self'",
