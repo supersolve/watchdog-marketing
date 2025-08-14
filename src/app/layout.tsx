@@ -14,9 +14,7 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = {
   title: 'Watchdog - AI for procurement',
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || 'https://watchdog-marketing.vercel.app'
-  ),
+  metadataBase: new URL('https://thewatchdog.no'),
   icons: {
     icon: '/favicon.ico',
     shortcut: '/favicon.ico',
@@ -30,10 +28,10 @@ export const metadata: Metadata = {
     siteName: 'Watchdog',
     images: [
       {
-        url: '/website-preview.png',
+        url: '/opengraph-image.png',
         width: 1200,
         height: 630,
-        alt: 'Watchdog – AI for procurement',
+        alt: 'Watchdog – Logo',
       },
     ],
     locale: 'en_US',
@@ -44,7 +42,7 @@ export const metadata: Metadata = {
     title: 'Watchdog - AI for procurement',
     description:
       'AI that monitors, validates, and automates procurement invoices.',
-    images: ['/logo-watchdog-background.png'],
+    images: ['/opengraph-image.png'],
   },
 }
 
