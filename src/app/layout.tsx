@@ -17,12 +17,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL || 'https://watchdog-marketing.vercel.app'
   ),
-  icons: [
-    {
-      rel: 'icon',
-      url: '/logo-watchdog-background.svg',
-    },
-  ],
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: [{ url: '/logo-watchdog-background.png', sizes: '180x180' }],
+  },
   openGraph: {
     title: 'Watchdog - AI for procurement',
     description:
