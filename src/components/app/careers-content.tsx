@@ -63,7 +63,7 @@ export function CareersContent({
     <section className="relative mx-auto max-w-3xl px-6 sm:px-8 pt-24 sm:pt-32 pb-28">
       <div className="flex items-center justify-between mb-4">
         <p className="text-xs uppercase tracking-wider text-muted-foreground">
-          Job posting: founding engineer
+          Job posting: software engineer
         </p>
       </div>
 

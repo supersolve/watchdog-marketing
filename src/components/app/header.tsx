@@ -52,10 +52,7 @@ const MobileMenu = ({
             className="justify-start w-full h-12 text-base"
             onClick={onClose}
           >
-            We&#39;re hiring!
-            <span aria-hidden className="ml-1">
-              →
-            </span>
+            Careers
           </Button>
         </Link>
         <a href="https://app.thewatchdog.no" rel="noopener noreferrer">
