@@ -55,7 +55,7 @@ const MobileMenu = ({
             Careers
           </Button>
         </Link>
-        <a href="https://app.thewatchdog.no" rel="noopener noreferrer">
+        <a href="https://app.watchdog.no" rel="noopener noreferrer">
           <Button
             variant="ghost"
             className="justify-start w-full h-12 text-base"
@@ -124,7 +124,7 @@ export function Header() {
             <div className="flex items-center space-x-4">
               <CareersPrompt />
               <a
-                href="https://app.thewatchdog.no/sign-in"
+                href="https://app.watchdog.no/sign-in"
                 rel="noopener noreferrer"
               >
                 <Button
