@@ -14,7 +14,7 @@ const pricingTiers = [
     period: '/per month',
     description: 'For the curious who want to try Watchdog',
     cta: 'Request Demo',
-    url: 'https://app.thewatchdog.no/sign-up',
+    url: 'https://app.watchdog.no/sign-up',
     popular: false,
     features: [
       'Includes 500 invoices',

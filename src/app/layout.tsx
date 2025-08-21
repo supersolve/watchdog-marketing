@@ -14,7 +14,7 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = {
   title: 'Watchdog - AI for procurement',
-  metadataBase: new URL('https://thewatchdog.no'),
+  metadataBase: new URL('https://watchdog.no'),
   icons: {
     icon: '/favicon.ico',
     shortcut: '/favicon.ico',

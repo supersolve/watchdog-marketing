@@ -37,7 +37,9 @@ export function middleware(request: NextRequest) {
       process.env.NODE_ENV === 'production'
         ? [
             'https://thewatchdog.no',
+            'https://watchdog.no',
             'https://www.thewatchdog.no',
+            'https://www.watchdog.no',
             'https://supersolve.ai',
             'https://www.supersolve.ai',
           ]
