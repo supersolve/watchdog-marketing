@@ -49,11 +49,16 @@ export function GoogleAnalytics() {
             'personalization_storage': 'denied',
             'security_storage': 'granted'
           });
+          // Configure GA4 with explicit cookie domain and linker for cross-domain
           gtag('config', 'G-X51RDDG53K', {
             debug_mode: ${process.env.NODE_ENV === 'development'},
             send_page_view: true,
             anonymize_ip: true,
-            allow_google_signals: false
+            allow_google_signals: false,
+            cookie_domain: 'watchdog.no',
+            linker: {
+              domains: ['watchdog.no','www.watchdog.no','thewatchdog.no','www.thewatchdog.no']
+            }
           });
         `}
       </Script>
