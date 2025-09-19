@@ -57,10 +57,10 @@ function isAllowedOrigin(origin: string): boolean {
   const allowed =
     process.env.NODE_ENV === 'production'
       ? [
-          'https://thewatchdog.no',
           'https://watchdog.no',
-          'https://www.thewatchdog.no',
           'https://www.watchdog.no',
+          'https://thewatchdog.no',
+          'https://www.thewatchdog.no',
           'https://supersolve.ai',
           'https://www.supersolve.ai',
         ]
