@@ -35,7 +35,7 @@ export class EmailService {
     try {
       console.log('About to call Resend API...')
       const { error } = await this.resend.emails.send({
-        from: 'Demo Requests <noreply@email.thewatchdog.no>',
+        from: 'Demo Requests <noreply@email.watchdog.no>',
         to: ['demo@supersolve.ai'],
         subject: `New Demo Request from ${safeCompanyName}`,
         html: this.generateDemoRequestEmailTemplate(
