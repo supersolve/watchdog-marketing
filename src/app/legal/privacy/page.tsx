@@ -2,9 +2,22 @@ import { SectionTitle } from '@/components/ui/section-title'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy - Watchdog',
+  title: 'Privacy Policy',
   description:
-    'Learn how Watchdog protects your privacy and handles your personal information.',
+    'Learn how Watchdog protects your privacy and handles your personal information. GDPR-compliant data processing for invoice validation and procurement software.',
+  alternates: {
+    canonical: 'https://watchdog.no/legal/privacy',
+  },
+  openGraph: {
+    title: 'Privacy Policy - Watchdog',
+    description:
+      'Learn how Watchdog protects your privacy and handles your personal information.',
+    url: 'https://watchdog.no/legal/privacy',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 }
 
 export default function PrivacyPage() {
@@ -14,7 +27,7 @@ export default function PrivacyPage() {
         <SectionTitle title="Privacy Policy" />
         <div className="mt-16 prose prose-lg prose-stone mx-auto">
           <p className="text-sm text-stone-500 mb-8">
-            Last updated: 22. July 2025
+            Last updated: 10 November 2025
           </p>
 
           <p className="text-stone-600 mb-8">

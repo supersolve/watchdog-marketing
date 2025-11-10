@@ -26,7 +26,7 @@ export function AboutSection() {
               <div className="flex h-full items-center justify-center">
                 <Image
                   src="/benjamin.png"
-                  alt="Benjamin - Founder"
+                  alt="Benjamin, Founder of Watchdog and supersolve AS - experienced consultant from BCG"
                   width={400}
                   height={400}
                   className="rounded-xl object-cover w-full h-full"
@@ -74,7 +74,7 @@ export function AboutSection() {
                   >
                     <Image
                       src={company.logo}
-                      alt={`${company.name} logo`}
+                      alt={`${company.name} - Watchdog team member background and consulting experience`}
                       width={180}
                       height={90}
                       className="object-contain h-10 w-auto"
@@ -102,7 +102,7 @@ export function AboutSection() {
               >
                 <Image
                   src={investor.logo}
-                  alt={`${investor.name} logo`}
+                  alt={`${investor.name} - Watchdog investor and backer, supporting AI-powered invoice validation`}
                   width={200}
                   height={100}
                   className="object-contain h-8 w-auto"

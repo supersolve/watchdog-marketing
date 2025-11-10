@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { getAllowedOrigins } from '@/lib/config'
 
 export function middleware(request: NextRequest) {
   // HTTPS enforcement in production
@@ -33,17 +34,7 @@ export function middleware(request: NextRequest) {
 
     // More restrictive CORS headers for API routes
     const origin = request.headers.get('origin')
-    const allowedOrigins =
-      process.env.NODE_ENV === 'production'
-        ? [
-            'https://watchdog.no',
-            'https://www.watchdog.no',
-            'https://thewatchdog.no',
-            'https://www.thewatchdog.no',
-            'https://supersolve.ai',
-            'https://www.supersolve.ai',
-          ]
-        : ['http://localhost:3000', 'http://127.0.0.1:3000']
+    const allowedOrigins = getAllowedOrigins()
 
     if (origin && allowedOrigins.includes(origin)) {
       response.headers.set('Access-Control-Allow-Origin', origin)

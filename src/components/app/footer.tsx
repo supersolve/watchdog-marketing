@@ -46,6 +46,12 @@ export function Footer() {
               </p>
               <div className="flex space-x-6">
                 <a
+                  href="/about"
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  About
+                </a>
+                <a
                   href="/legal/privacy"
                   className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                 >

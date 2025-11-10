@@ -62,7 +62,7 @@ export function HowItWorksSection() {
               <div className="relative w-full max-w-lg">
                 <Image
                   src={currentStep.image}
-                  alt={`${currentStep.title} illustration`}
+                  alt={`Step ${currentStep.number}: ${currentStep.title} - Watchdog invoice validation process demonstration`}
                   width={500}
                   height={400}
                   className="w-full h-auto rounded-lg object-contain"
@@ -127,7 +127,7 @@ export function HowItWorksSection() {
                           <div className="relative w-full max-w-sm mx-auto">
                             <Image
                               src={step.image}
-                              alt={`${step.title} illustration`}
+                              alt={`Step ${step.number}: ${step.title} - Watchdog invoice validation process demonstration`}
                               width={400}
                               height={300}
                               className="w-full h-auto rounded-lg"
