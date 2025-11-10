@@ -21,6 +21,11 @@ export const metadata: Metadata = {
   description:
     'AI-powered invoice validation and procurement error detection. Automatically scan, validate, and detect errors in procurement invoices. Integrate with your ERP in 1 hour.',
   metadataBase: new URL('https://watchdog.no'),
+  verification: {
+    other: {
+      'msvalidate.01': 'E28F7413D2C86C1D713730F3EF9E9C86',
+    },
+  },
   icons: {
     icon: '/favicon.ico',
     shortcut: '/favicon.ico',
