@@ -2,9 +2,22 @@ import { SectionTitle } from '@/components/ui/section-title'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Cookie Policy - Watchdog',
+  title: 'Cookie Policy',
   description:
-    'Learn how Watchdog uses cookies and similar technologies on our website.',
+    'Learn how Watchdog uses cookies and similar technologies on our website. Manage your cookie preferences and understand our use of Google Analytics.',
+  alternates: {
+    canonical: 'https://watchdog.no/legal/cookies',
+  },
+  openGraph: {
+    title: 'Cookie Policy - Watchdog',
+    description:
+      'Learn how Watchdog uses cookies and similar technologies on our website.',
+    url: 'https://watchdog.no/legal/cookies',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 }
 
 export default function CookiePage() {
@@ -15,7 +28,7 @@ export default function CookiePage() {
 
         <div className="mt-16 prose prose-lg prose-stone mx-auto">
           <p className="text-sm text-stone-500 mb-8">
-            Last updated: 22 July 2025
+            Last updated: 10 November 2025
           </p>
 
           <p className="text-stone-600 mb-8">

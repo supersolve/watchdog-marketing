@@ -119,7 +119,7 @@ export const IntegrationsAnimation = () => {
                 <div className={styles.centerLogoInner}>
                   <Image
                     src="/watchdog.svg"
-                    alt="Watchdog Logo"
+                    alt="Watchdog invoice validation platform connecting with accounting and ERP systems"
                     width={96}
                     height={96}
                     className="relative z-10"
@@ -142,7 +142,7 @@ export const IntegrationsAnimation = () => {
                       <div className={styles.iconContainer}>
                         <Image
                           src={icon.src}
-                          alt={`${icon.name} Logo`}
+                          alt={`${icon.name} accounting software integration - connects with Watchdog for automated invoice validation`}
                           width={60}
                           height={60}
                           className={styles.iconImage}

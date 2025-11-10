@@ -49,27 +49,62 @@ export function checkRateLimit(request: NextRequest): void {
 }
 
 /**
- * Detect if request is from a bot
+ * Detect if request is from a malicious bot (not legitimate crawlers)
+ * Allows legitimate SEO crawlers (Googlebot, Bingbot, etc.) and AI crawlers
  */
 export function detectBot(request: NextRequest): void {
   const userAgent = request.headers.get('user-agent')?.toLowerCase() || ''
 
-  // Check for common bot patterns
-  const botPatterns = [
-    'bot',
-    'crawler',
-    'spider',
-    'scraper',
+  // Allow legitimate SEO and AI crawlers
+  const allowedBots = [
+    'googlebot',
+    'bingbot',
+    'slurp', // Yahoo
+    'duckduckbot',
+    'baiduspider',
+    'yandexbot',
+    'facebookexternalhit',
+    'twitterbot',
+    'linkedinbot',
+    'whatsapp',
+    'applebot',
+    'gptbot',
+    'chatgpt-user',
+    'ccbot',
+    'anthropic-ai',
+    'claude-web',
+    'perplexitybot',
+    'applebot-extended',
+  ]
+
+  // Check if it's an allowed bot
+  const isAllowedBot = allowedBots.some((bot) => userAgent.includes(bot))
+  if (isAllowedBot) {
+    return // Allow legitimate crawlers
+  }
+
+  // Block malicious/scraping bots (but not legitimate crawlers)
+  const maliciousBotPatterns = [
     'curl',
     'wget',
     'python-requests',
+    'scrapy',
+    'scraper',
+    'httpie',
+    'postman',
+    'insomnia',
   ]
 
-  const isBot = botPatterns.some((pattern) => userAgent.includes(pattern))
+  const isMaliciousBot = maliciousBotPatterns.some((pattern) =>
+    userAgent.includes(pattern)
+  )
 
-  if (isBot) {
+  if (isMaliciousBot) {
     throw new BotDetectionError()
   }
+
+  // Allow other bots that might be legitimate (like monitoring tools)
+  // Only block if explicitly malicious
 }
 
 /**

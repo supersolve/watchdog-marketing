@@ -30,7 +30,7 @@ export function HeroSection() {
                     <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full overflow-hidden bg-stone-100 flex items-center justify-center">
                       <Image
                         src="/watchdog.svg"
-                        alt="Financial Watchdog"
+                        alt="Watchdog AI-powered invoice validation logo - dog with magnifying glass examining documents"
                         width={112}
                         height={112}
                         className="w-full h-full object-cover"
@@ -66,7 +66,7 @@ export function HeroSection() {
             <div className="hidden lg:flex justify-center items-center lg:col-span-2 min-h-[400px]">
               <Image
                 src="/watchdog.svg"
-                alt="Financial Watchdog Dashboard Preview"
+                alt="Watchdog AI invoice validation software - automated invoice error detection and procurement oversight"
                 width={350}
                 height={350}
                 className="w-full max-w-xs h-auto"

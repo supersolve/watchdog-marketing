@@ -1,6 +1,7 @@
 import { Resend } from 'resend'
 import { ExternalServiceError } from '@/lib/errors'
 import { escapeHtml } from '@/lib/validations'
+import { logger } from '@/lib/logger'
 
 export interface DemoRequestEmailData {
   companyName: string
@@ -17,23 +18,23 @@ export class EmailService {
 
   constructor(apiKey: string) {
     this.resend = new Resend(apiKey)
-    console.log('Resend client created')
+    logger.log('Resend client created')
   }
 
   /**
    * Send demo request notification email
    */
   async sendDemoRequestEmail(data: DemoRequestEmailData): Promise<void> {
-    console.log('=== Email Service: Starting to send email ===')
+    logger.log('=== Email Service: Starting to send email ===')
     // Sanitize inputs for HTML content
     const safeCompanyName = escapeHtml(data.companyName.trim())
     const safeEmail = escapeHtml(data.email.trim())
     const safePricingTier = escapeHtml(data.pricingTier.trim())
     const safeButtonSource = escapeHtml((data.buttonSource || 'unknown').trim())
-    console.log('Input sanitization completed')
+    logger.log('Input sanitization completed')
 
     try {
-      console.log('About to call Resend API...')
+      logger.log('About to call Resend API...')
       const { error } = await this.resend.emails.send({
         from: 'Demo Requests <noreply@email.watchdog.no>',
         to: ['demo@supersolve.ai'],
@@ -45,28 +46,29 @@ export class EmailService {
           safeButtonSource
         ),
       })
-      console.log('Resend API call completed, checking for errors...')
+      logger.log('Resend API call completed, checking for errors...')
 
       if (error) {
-        console.error('Resend API returned error:', error)
+        logger.error('Resend API returned error:', error)
         throw new ExternalServiceError('Resend', 'Failed to send email')
       }
-      console.log('Email sent successfully via Resend!')
+      logger.log('Email sent successfully via Resend!')
     } catch (error) {
-      console.error('=== Email Service Error ===')
-      console.error('Error in sendDemoRequestEmail:', error)
+      logger.error('=== Email Service Error ===')
+      logger.error('Error in sendDemoRequestEmail:', error)
 
       if (error instanceof ExternalServiceError) {
-        console.error('Re-throwing ExternalServiceError')
+        logger.error('Re-throwing ExternalServiceError')
         throw error
       }
 
-      console.error('Unexpected error sending email:', error)
+      logger.error('Unexpected error sending email:', error)
       if (error instanceof Error) {
-        console.error('Error details:', {
+        logger.error('Error details:', {
           name: error.name,
           message: error.message,
-          stack: error.stack,
+          stack:
+            process.env.NODE_ENV === 'development' ? error.stack : undefined,
         })
       }
       throw new ExternalServiceError(
@@ -113,7 +115,7 @@ export class EmailService {
  * Factory function to create email service instance
  */
 export function createEmailService(): EmailService {
-  console.log('Creating email service...')
+  logger.log('Creating email service...')
   const apiKey = process.env.RESEND_API_KEY
 
   if (!apiKey) {

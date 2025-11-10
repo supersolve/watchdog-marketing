@@ -3,6 +3,8 @@ import { applyMiddleware } from '@/lib/api/middleware'
 import { createEmailService } from '@/lib/api/email-service'
 import { validateDemoRequest, DemoRequestData } from '@/lib/validations'
 import { ValidationError, formatErrorResponse, withTimeout } from '@/lib/errors'
+import { getAllowedOrigins } from '@/lib/config'
+import { logger } from '@/lib/logger'
 
 // Read request body with size limit to prevent large payloads
 async function readJsonWithLimit(req: NextRequest, maxBytes = 1024 * 1024) {
@@ -54,49 +56,40 @@ function isBrowserRequest(req: NextRequest): boolean {
 }
 
 function isAllowedOrigin(origin: string): boolean {
-  const allowed =
-    process.env.NODE_ENV === 'production'
-      ? [
-          'https://watchdog.no',
-          'https://www.watchdog.no',
-          'https://thewatchdog.no',
-          'https://www.thewatchdog.no',
-          'https://supersolve.ai',
-          'https://www.supersolve.ai',
-        ]
-      : ['http://localhost:3000', 'http://127.0.0.1:3000']
+  const allowed = getAllowedOrigins()
   return allowed.includes(origin)
 }
 
 export async function POST(request: NextRequest) {
-  console.log('=== Demo Request API Called ===')
+  logger.log('=== Demo Request API Called ===')
   try {
     // Basic Origin allowlist for browser requests
     const origin = request.headers.get('origin')
     if (origin && isBrowserRequest(request) && !isAllowedOrigin(origin)) {
+      logger.warn('Origin not allowed:', origin)
       return NextResponse.json({ error: 'Origin not allowed' }, { status: 403 })
     }
 
     // Check environment variables first
     if (!process.env.RESEND_API_KEY && !process.env.DISABLE_EMAIL_SEND) {
-      console.error('RESEND_API_KEY environment variable is missing')
+      logger.error('RESEND_API_KEY environment variable is missing')
       return NextResponse.json(
         { error: 'Email service is not configured properly' },
         { status: 503 }
       )
     }
-    console.log('Environment variables check passed')
+    logger.log('Environment variables check passed')
 
     // Apply middleware checks (environment validation, bot detection, rate limiting)
     applyMiddleware(request, ['RESEND_API_KEY'])
-    console.log('Middleware checks passed')
+    logger.log('Middleware checks passed')
 
     // Parse and validate request body with size cap
     const body = await readJsonWithLimit(request, 256 * 1024)
     const { companyName, email, pricingTier, buttonSource } =
       body as DemoRequestData
     const safeLogEmail = email ? maskEmail(email) : 'n/a'
-    console.log('Request data:', {
+    logger.log('Request data:', {
       companyName: companyName ? `${companyName.slice(0, 2)}***` : 'n/a',
       email: safeLogEmail,
       pricingTier: pricingTier || 'none',
@@ -113,11 +106,11 @@ export async function POST(request: NextRequest) {
     if (!validation.isValid) {
       throw new ValidationError('Validation failed', validation.errors)
     }
-    console.log('Input validation passed')
+    logger.log('Input validation passed')
 
     // Optionally skip sending email (for local testing)
     if (process.env.DISABLE_EMAIL_SEND === 'true') {
-      console.log('[DISABLED] Would send demo request email')
+      logger.log('[DISABLED] Would send demo request email')
       return NextResponse.json({
         success: true,
         message: 'Demo request submitted (email sending disabled)',
@@ -125,9 +118,9 @@ export async function POST(request: NextRequest) {
     }
 
     // Create email service and send demo request email
-    console.log('About to create email service...')
+    logger.log('About to create email service...')
     const emailService = createEmailService()
-    console.log('Email service created, about to send email...')
+    logger.log('Email service created, about to send email...')
 
     // Send email with timeout protection
     await withTimeout(
@@ -140,27 +133,27 @@ export async function POST(request: NextRequest) {
       10000, // 10 second timeout
       'Email sending timed out'
     )
-    console.log('Email sent successfully!')
+    logger.log('Email sent successfully!')
 
     return NextResponse.json({
       success: true,
       message: 'Demo request submitted successfully',
     })
   } catch (error) {
-    console.error('=== Demo Request API Error ===')
-    console.error('Error processing demo request:', error)
+    logger.error('=== Demo Request API Error ===')
+    logger.error('Error processing demo request:', error)
 
     // Enhanced error logging for debugging without leaking PII
     if (error instanceof Error) {
-      console.error('Error details:', {
+      logger.error('Error details:', {
         name: error.name,
         message: error.message,
-        stack: error.stack,
+        stack: process.env.NODE_ENV === 'development' ? error.stack : undefined,
       })
     }
 
     const errorResponse = formatErrorResponse(error)
-    console.error('Formatted error response:', errorResponse)
+    logger.error('Formatted error response:', errorResponse)
     return NextResponse.json(
       {
         error: errorResponse.error,
