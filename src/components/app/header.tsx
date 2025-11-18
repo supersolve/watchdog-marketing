@@ -113,9 +113,9 @@ export function Header() {
           {/* Logo/Brand */}
           <div className="flex-shrink-0">
             <Link href="/" className="block">
-              <h1 className="text-xl font-serif font-semibold text-tertiary-foreground hover:text-foreground transition-colors cursor-pointer">
+              <span className="text-xl font-serif font-semibold text-tertiary-foreground hover:text-foreground transition-colors cursor-pointer">
                 Watchdog
-              </h1>
+              </span>
             </Link>
           </div>
 

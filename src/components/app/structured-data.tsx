@@ -53,7 +53,7 @@ export function StructuredData() {
         name: 'Free Tier',
         price: '0',
         priceCurrency: 'NOK',
-        priceValidUntil: '2026-03-31', // Update annually
+        priceValidUntil: '2026-12-31', // Update annually
         availability: 'https://schema.org/InStock',
         description:
           'Free tier includes 500 invoices and 1 agreement, no credit card required',

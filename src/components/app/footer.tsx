@@ -19,7 +19,9 @@ export function Footer() {
         <div className="pt-16 pb-8">
           {/* Brand Section */}
           <div>
-            <h2 className="text-2xl font-serif font-semibold mb-4">Watchdog</h2>
+            <div className="text-2xl font-serif font-semibold mb-4">
+              Watchdog
+            </div>
             <p className="text-muted-foreground text-sm leading-relaxed mb-6 max-w-md">
               Watchdog automatically scans your invoices, compares them to your
               agreements, and alerts you of discrepancies before they impact

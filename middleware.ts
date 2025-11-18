@@ -2,13 +2,22 @@ import { NextRequest, NextResponse } from 'next/server'
 import { getAllowedOrigins } from '@/lib/config'
 
 export function middleware(request: NextRequest) {
-  // HTTPS enforcement in production
-  if (
-    process.env.NODE_ENV === 'production' &&
-    request.headers.get('x-forwarded-proto') !== 'https'
-  ) {
+  const host = request.headers.get('host') || ''
+  const proto = request.headers.get('x-forwarded-proto') || 'http'
+
+  // Canonical domain enforcement: redirect www to non-www
+  if (host.startsWith('www.')) {
+    const newHost = host.replace('www.', '')
     return NextResponse.redirect(
-      `https://${request.headers.get('host')}${request.nextUrl.pathname}${request.nextUrl.search}`,
+      `https://${newHost}${request.nextUrl.pathname}${request.nextUrl.search}`,
+      301
+    )
+  }
+
+  // HTTPS enforcement in production
+  if (process.env.NODE_ENV === 'production' && proto !== 'https') {
+    return NextResponse.redirect(
+      `https://${host}${request.nextUrl.pathname}${request.nextUrl.search}`,
       301
     )
   }

@@ -7,6 +7,17 @@ Allow: /
 # Disallow admin and API routes
 Disallow: /api/
 
+# Disallow Next.js build artifacts and static files
+Disallow: /_next/
+
+# Disallow app subdomain URLs (these are from app.watchdog.no)
+Disallow: /*sign-in*
+Disallow: /*redirect*
+
+# Disallow malformed URLs with special characters
+Disallow: /*$*
+Disallow: /*%26*
+
 # Sitemap location
 Sitemap: https://watchdog.no/sitemap.xml
 
