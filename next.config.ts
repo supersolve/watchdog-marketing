@@ -4,8 +4,21 @@ const nextConfig: NextConfig = {
   // Security-related configurations
   poweredByHeader: false, // Remove X-Powered-By header
 
+  // Trailing slash configuration for consistent URLs
+  trailingSlash: false,
+
   async headers() {
     return [
+      // Prevent indexing of Next.js static files
+      {
+        source: '/_next/:path*',
+        headers: [
+          {
+            key: 'X-Robots-Tag',
+            value: 'noindex, nofollow',
+          },
+        ],
+      },
       {
         source: '/(.*)',
         headers: [
@@ -76,6 +89,17 @@ const nextConfig: NextConfig = {
         source: '/.env',
         destination: '/',
         permanent: false,
+      },
+      // Redirect malformed URLs with special characters
+      {
+        source: '/:path(.*\\$.*)',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/:path(.*%26.*)',
+        destination: '/',
+        permanent: true,
       },
     ]
   },

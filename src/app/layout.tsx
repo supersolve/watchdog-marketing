@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     apple: [{ url: '/logo-watchdog-background.png', sizes: '180x180' }],
   },
   alternates: {
-    canonical: '/',
+    canonical: 'https://watchdog.no',
   },
   openGraph: {
     title: 'Watchdog - AI-Powered Invoice Validation & Procurement Software',
@@ -77,9 +77,12 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#1c1917" />
+        <link rel="alternate" hrefLang="en" href="https://watchdog.no" />
+        <link rel="alternate" hrefLang="x-default" href="https://watchdog.no" />
         <StructuredData />
       </head>
       <body
